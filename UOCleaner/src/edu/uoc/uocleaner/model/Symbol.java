@@ -10,8 +10,8 @@ public enum Symbol {
 		WALL,
 		CORRIDOR;
 	
-		char ascii;
-		String image;
+		private char ascii;
+		private String image;
 
 		
 		Symbol() {
@@ -19,7 +19,7 @@ public enum Symbol {
 		}
 		
 	
-		Symbol(char ascii, String image)  {
+		private Symbol(char ascii, String image)  {
 			
 		}
 		
@@ -108,7 +108,16 @@ public enum Symbol {
 			
 		}
 
+		public static Symbol valueOf() {
+			return null;
+			
+		}
 		
-		
+		/*
+		public static Symbol[] values() {
+			return null;
+			
+		}
+		*/
 		
 }
