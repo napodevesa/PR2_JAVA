@@ -1,5 +1,7 @@
 package edu.uoc.uocleaner.model;
 
+import java.lang.String;
+
 public enum Symbol {
 	
 
@@ -10,7 +12,7 @@ public enum Symbol {
 		WALL,
 		CORRIDOR;
 	
-		static char ascii;
+		private static char ascii ;
 		private String image;
 
 		
@@ -21,35 +23,37 @@ public enum Symbol {
 	
 		private Symbol(char ascii, String image)  {
 			
+			
+			
 		}
 		
 		public static Symbol getName(char ascii)  {
 			
 			
-			if (ascii == (char)64){
+			if (ascii == '@'){
 				return DUSTBALL;
 			
 			}
 			
-			if (ascii == (char)68){
+			if (ascii ==  'D'){
 				return DUMPSTER;
 			
 			}
 			
-			if (ascii == (char)86){
+			if (ascii == 'V'){
 				return VACUUM;
 			
 			}
-			if (ascii == (char)183){
+			if (ascii == '·'){
 				return DIRT;
 			
 			}
 			
-			if (ascii == (char)35){
+			if (ascii == '#'){
 				return WALL;
 			
 			}
-			if (ascii == (char)32){
+			if (ascii == ' '){
 				return CORRIDOR;
 			
 			}
@@ -63,12 +67,12 @@ public enum Symbol {
 		
 		
 		public char getAscii()  {
-			return ascii;
+			return Symbol.ascii;
 			
 		}
 		
 		
-		public String getImage()  {
+		public java.lang.String getImage()  {
 			return image;
 					
 		}
@@ -78,40 +82,11 @@ public enum Symbol {
 		
 		public String toString()  {
 			
-			
-			if ( Symbol.ascii == (char)64 ){
-				return "@";
-			
-			}
-		
-			
-			if (Symbol.ascii == (char)68){
-				return "D";
-			
-			}
-			if (Symbol.ascii == (char)86){
-				return "V";
-			
-			}
-			if (Symbol.ascii == (char)183){
-				return "·";
-			
-			}
-			if (Symbol.ascii == (char)35){
-				
-				return "#";
-			
-			}
-			if (Symbol.ascii == (char)32){
-				
-				return " ";
-			
-			}
-			
-			return " ";
-			
 	
+			return image;
 			
+			
+		
 			
 		}
 

@@ -1,12 +1,15 @@
 package edu.uoc.uocleaner.model;
 
-public class Sprite {
+import java.lang.Object;
+import java.lang.String;
+
+public abstract class Sprite extends java.lang.Object {
 	
-	private int row;
-	private int column;
+	private static int row;
+	private static int column;
+	
 	private Symbol symbol;
 
-	
 	
 	protected Sprite (int row, int column, Symbol symbol) throws SpriteException {
 		
@@ -18,6 +21,12 @@ public class Sprite {
 	
 	
 	
+	public Sprite() {
+		// TODO Auto-generated constructor stub
+	}
+
+
+
 	public int getRow() {
 		return row;
 	}
@@ -25,7 +34,7 @@ public class Sprite {
 		
 		
 		if (row <=0) {
-			throw new SpriteException(SpriteException.ERROR_NUM_ROWS_INCORRECT);
+			throw new SpriteException(SpriteException.ERROR_INDEX_ROW_INCORRECT);
 		}
 		
 		else 
@@ -38,16 +47,19 @@ public class Sprite {
 	public int getColumn() {
 		return column;
 	}
+	
 	public void setColumn(int column) throws SpriteException {
+		
 		
 		if (column <=0) {
 			
-			throw new SpriteException(SpriteException.ERROR_NUM_COLUMNS_INCORRECT);
+			throw new SpriteException(SpriteException.ERROR_INDEX_COLUMN_INCORRECT);
 		}
 		
 		else 
 		
 		{
+			
 		this.column = column;
 		}
 		
@@ -57,16 +69,17 @@ public class Sprite {
 	public Symbol getSymbol() {
 		return getSymbol();
 	}
+	
 	public void setSymbol(Symbol symbol) {
 		this.symbol = symbol;
 	}
 	
 	
+@Override
 	
-	@Override
 	public boolean equals(Object obj) {
 		
-		final Symbol other =  (Symbol) obj;
+		 Sprite other =  (Sprite) obj;
 		
 		
 	    if (obj == null) {
@@ -78,8 +91,8 @@ public class Sprite {
 	    }
 	    
 
-	    if ((this.row == row) && 
-	    		(this.column == column) && (this.symbol.ascii == other.ascii)) {
+	    if (Sprite.row == other.row && 
+	    		Sprite.column == other.column && Sprite.symbol.ascii == other.symbol.ascii) {
 	        return true;
 	    }
 	    
