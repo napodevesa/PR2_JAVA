@@ -78,8 +78,8 @@ public class Sprite {
 	    }
 	    
 
-	    if (this.row == other.row && 
-	    		this.column == other.symbol.column && this.symbol.ascii == other.ascii) {
+	    if ((this.row == row) && 
+	    		(this.column == column) && (this.symbol.ascii == other.ascii)) {
 	        return true;
 	    }
 	    

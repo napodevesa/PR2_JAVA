@@ -10,7 +10,7 @@ public enum Symbol {
 		WALL,
 		CORRIDOR;
 	
-		private char ascii;
+		static char ascii;
 		private String image;
 
 		
@@ -23,13 +23,14 @@ public enum Symbol {
 			
 		}
 		
-		public Symbol getName(char ascii)  {
+		public static Symbol getName(char ascii)  {
 			
 			
 			if (ascii == (char)64){
 				return DUSTBALL;
 			
 			}
+			
 			if (ascii == (char)68){
 				return DUMPSTER;
 			
@@ -69,41 +70,47 @@ public enum Symbol {
 		
 		public String getImage()  {
 			return image;
-				
-			
+					
 		}
 		
 		
+		@Override
 		
 		public String toString()  {
 			
-			if (ascii == (char)64){
+			
+			if ( Symbol.ascii == (char)64 ){
 				return "@";
 			
 			}
-			if (ascii == (char)68){
+		
+			
+			if (Symbol.ascii == (char)68){
 				return "D";
 			
 			}
-			if (ascii == (char)86){
+			if (Symbol.ascii == (char)86){
 				return "V";
 			
 			}
-			if (ascii == (char)183){
+			if (Symbol.ascii == (char)183){
 				return "·";
 			
 			}
-			if (ascii == (char)35){
-				return null;
+			if (Symbol.ascii == (char)35){
+				
+				return "#";
 			
 			}
-			if (ascii == (char)32){
-				return null;
+			if (Symbol.ascii == (char)32){
+				
+				return " ";
 			
 			}
 			
+			return " ";
 			
-			return null;
+	
 			
 			
 		}
