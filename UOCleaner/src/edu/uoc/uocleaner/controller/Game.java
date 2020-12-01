@@ -98,7 +98,14 @@ public class Game {
 	 * @return True if there are no more levels and thus the game is finished. Otherwise, false.
 	 */
 	private boolean isFinished() {
-		//TODO
+	
+		if (numLevel == MAX_LEVELS) {
+			return true;
+		}
+		else 
+		{
+			return false;
+		}
 	}
 	
 	/**
@@ -117,7 +124,8 @@ public class Game {
 	 * @throws VacuumException When there is an exception/problem with the vacuum cleaner.
 	 * @throws SpriteException When there is a Sprite exception/problem.
 	 */
-	public boolean nextLevel() throws FileNotFoundException, LevelException, VacuumException, SpriteException {		
+	public boolean nextLevel() throws FileNotFoundException, LevelException, VacuumException, SpriteException {
+		return false;		
 		//TODO		
 	}
 	

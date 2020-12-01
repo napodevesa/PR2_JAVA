@@ -4,22 +4,24 @@ public class Dirt extends Sprite{
 	
 	private int score = 1;
 	
-
 	public Dirt(int row, int column)throws SpriteException {
 		// TODO Auto-generated constructor stub
 		
-		
 	}
+	
 	
 	protected Dirt(int row, int column, Symbol symbol, int score) 
 			throws SpriteException{
+		super(row, column, symbol);
 		
-		setRow(row);
-		setColumn(column);
-		setSymbol(symbol);
-		setScore (score);
+		this.setRow(row);
+		this.setColumn(column);
+		this.setSymbol(symbol);
+		this.setScore (score);
 		
 	}
+	
+	
 
 
 	public int getScore() {

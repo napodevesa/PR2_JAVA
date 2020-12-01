@@ -1,8 +1,6 @@
 package edu.uoc.uocleaner.model;
 
 
-
-
 public class Wall extends Sprite {
 	
 	

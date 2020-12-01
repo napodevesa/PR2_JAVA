@@ -2,6 +2,7 @@ package edu.uoc.uocleaner.model;
 
 import java.lang.String;
 
+
 public enum Symbol {
 	
 
@@ -12,11 +13,14 @@ public enum Symbol {
 		WALL,
 		CORRIDOR;
 	
-		private static char ascii ;
+	
+		private char ascii ;
 		private String image;
+		
+		
 
 		
-		Symbol() {
+		private Symbol() {
 			// TODO Auto-generated constructor stub
 		}
 		
@@ -67,39 +71,65 @@ public enum Symbol {
 		
 		
 		public char getAscii()  {
-			return Symbol.ascii;
+			
+			DUSTBALL.ascii = '@';
+			DUMPSTER.ascii = 'D';
+			VACUUM.ascii = 'V';
+			DIRT.ascii = '·';
+			WALL.ascii = '#';
+			CORRIDOR.ascii = ' ';
+			
+			
+			return this.ascii;
+			
 			
 		}
 		
 		
 		public java.lang.String getImage()  {
-			return image;
+			
+			DUSTBALL.image = "dustball.png";
+			DUMPSTER.image = "dumpster.png";
+			VACUUM.image = "huocver.png";
+			DIRT.image = "dirt.png";
+			WALL.image = "";
+			CORRIDOR.image = "";
+			
+			
+			return this.image;
 					
 		}
 		
 		
-		@Override
+	@Override
 		
-		public String toString()  {
-			
+	public String toString()  {
+		
+		DUSTBALL.ascii =  '@';
+		DUMPSTER.ascii = 'D';
+		VACUUM.ascii = 'V';
+		DIRT.ascii = '·';
+		WALL.ascii = '#';
+		CORRIDOR.ascii = ' ';
+		
+		String str = String.valueOf(this.ascii);
+		
+		return str;
+		
+		}
 	
-			return image;
-			
-			
-		
-			
-		}
 
-		public static Symbol valueOf() {
-			return null;
+	public static Symbol valueOf() {
+		return null;
 			
-		}
+	}
+	
 		
-		/*
-		public static Symbol[] values() {
-			return null;
+	/*
+	public static Symbol[] values() {
+	return null;
 			
-		}
-		*/
+	}
+	*/
 		
 }

@@ -5,10 +5,13 @@ import java.lang.String;
 
 public abstract class Sprite extends java.lang.Object {
 	
-	private static int row;
-	private static int column;
-	
+	private int row;
+	private int column;
 	private Symbol symbol;
+	
+	public Sprite() {
+		// TODO Auto-generated constructor stub
+	}
 
 	
 	protected Sprite (int row, int column, Symbol symbol) throws SpriteException {
@@ -20,10 +23,6 @@ public abstract class Sprite extends java.lang.Object {
 	}
 	
 	
-	
-	public Sprite() {
-		// TODO Auto-generated constructor stub
-	}
 
 
 
@@ -44,9 +43,11 @@ public abstract class Sprite extends java.lang.Object {
 		}
 		
 	}
+	
 	public int getColumn() {
 		return column;
 	}
+	
 	
 	public void setColumn(int column) throws SpriteException {
 		
@@ -79,9 +80,9 @@ public abstract class Sprite extends java.lang.Object {
 	
 	public boolean equals(Object obj) {
 		
-		 Sprite other =  (Sprite) obj;
+		Sprite other =  (Sprite) obj;
 		
-		
+	
 	    if (obj == null) {
 	        return false;
 	    }
@@ -90,43 +91,37 @@ public abstract class Sprite extends java.lang.Object {
 	        return false;
 	    }
 	    
-
-	    if (Sprite.row == other.row && 
-	    		Sprite.column == other.column && Sprite.symbol.ascii == other.symbol.ascii) {
+	    if (this.row == other.row && 
+	    		this.column == other.column && this.symbol.getAscii() == other.symbol.getAscii()) {
 	        return true;
 	    }
 	    
+	   
 
 	    return false;
 	}
 	
-	
+	@Override
 	
 	public String toString()  {
 		
-		if (Symbol.DUSTBALL == symbol){
+		if (symbol.getAscii() ==  '@') {
 			return "@";
-		
 		}
-		if (Symbol.DUMPSTER == symbol){
+		if (symbol.getAscii() ==  'D') {
 			return "D";
-		
 		}
-		if (Symbol.VACUUM == symbol){
+		if (symbol.getAscii() ==  'V') {
 			return "V";
-		
 		}
-		if (Symbol.DIRT == symbol){
+		if (symbol.getAscii() ==  '·') {
 			return "·";
-		
 		}
-		if (Symbol.WALL == symbol){
-			return null;
-		
+		if (symbol.getAscii() ==  '#') {
+			return "#";
 		}
-		if (Symbol.CORRIDOR == symbol){
-			return null;
-		
+		if (symbol.getAscii() ==  ' ') {
+			return " ";
 		}
 		
 		

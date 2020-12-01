@@ -9,7 +9,7 @@ import java.util.Scanner;
 
 /** 
  * Level/Room class. 
- * @author David García Solórzano
+ * @author David Garcï¿½a Solï¿½rzano
  * @version 1.0 
  */
 public class Level{
@@ -86,6 +86,11 @@ public class Level{
         if(!isDirt) {
         	throw new LevelException(LevelException.ERROR_NO_DIRT);
         }        
+	}
+
+	public Object get1DBoard() {
+		// TODO Auto-generated method stub
+		return null;
 	}	
 	
 	//TODO
