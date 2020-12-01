@@ -80,53 +80,71 @@ public abstract class Sprite extends java.lang.Object {
 	
 	public boolean equals(Object obj) {
 		
-		Sprite other =  (Sprite) obj;
-		
 	
-	    if (obj == null) {
-	        return false;
-	    }
-
-	    if (obj.getClass() != this.getClass()) {
-	        return false;
-	    }
-	    
-	    if (this.row == other.row && 
-	    		this.column == other.column && this.symbol.getAscii() == other.symbol.getAscii()) {
-	        return true;
-	    }
-	    
-	   
+	if (this == obj) return true;
+    if (obj == null) return false;
+    if (getClass() != obj.getClass()) return false;
+    
+    final Sprite other = (Sprite)obj;
+     
+    if (this.column==other.column && this.row==other.row) {
+    	return true;
+    }
+   
 
 	    return false;
 	}
 	
+/*
+ * 
+ * && this.symbol.getAscii() == other.symbol.getAscii()
+ */
+
+
+
+
 	@Override
 	
 	public String toString()  {
 		
-		if (symbol.getAscii() ==  '@') {
-			return "@";
-		}
-		if (symbol.getAscii() ==  'D') {
-			return "D";
-		}
-		if (symbol.getAscii() ==  'V') {
-			return "V";
-		}
-		if (symbol.getAscii() ==  '·') {
-			return "·";
-		}
-		if (symbol.getAscii() ==  '#') {
-			return "#";
-		}
-		if (symbol.getAscii() ==  ' ') {
-			return " ";
-		}
+/*
+		Symbol.CORRIDOR.getAscii();
+		Symbol.WALL.getAscii();
+		Symbol.DUMPSTER.getAscii();
+		Symbol.DUSTBALL.getAscii();
+		Symbol.DIRT.getAscii();
+		Symbol.VACUUM.getAscii();
 		
+	
+		String str = String.valueOf(Symbol.WALL.getAscii());
 		
-		return null;
+		return str;
 		
+	*/	
+		
+		int numChar = 6;
+        char ascii = 0;
+		
+        switch (numChar) 
+        {
+            case 1:  ascii = Symbol.DUSTBALL.getAscii();
+                     break;
+            case 2:  ascii = Symbol.DUMPSTER.getAscii();
+                     break;
+            case 3:  ascii = Symbol.VACUUM.getAscii();
+                     break;
+            case 4:  ascii = Symbol.DIRT.getAscii();
+                     break;
+            case 5:  ascii = Symbol.WALL.getAscii();
+                     break;
+            case 6:  ascii = Symbol.CORRIDOR.getAscii();
+                     break;
+           
+        }
+		
+        String str = String.valueOf(ascii);
+		return str;
+
 		
 	}
 
