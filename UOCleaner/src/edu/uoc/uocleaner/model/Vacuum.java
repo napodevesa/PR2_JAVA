@@ -1,24 +1,22 @@
 package edu.uoc.uocleaner.model;
 
-
-
-public class Vacuum extends Sprite {
+public class Vacuum extends Sprite  {
 	
 	private int MAX_CAPACITY;
 	private int capacity = 0;
 	private Sprite under;
 	
-	public Vacuum(int row, int column)throws SpriteException {
+	public Vacuum(int row, int column) {
 		// TODO Auto-generated constructor stub
 		
 		
 	}
 
-	public Vacuum(int row, int column, int capacity) throws  SpriteException, VacuumException {
+	public Vacuum(int row, int column, int maxCapacity) throws  SpriteException, VacuumException {
 		// TODO Auto-generated constructor stub
 		setRow (row);
 		setColumn (column);
-		setCapacity (capacity);
+		
 		
 	}
 
@@ -45,17 +43,11 @@ public class Vacuum extends Sprite {
 		
 	}
 
-	public void setCapacity(int capacity) throws VacuumException {
-		this.capacity = capacity;
+	private void setCapacity​(int capacity) throws VacuumException{
+		
 	}
+	
 
-	public Sprite getUnder() {
-		return under;
-	}
-
-	public void setUnder(Sprite under) {
-		this.under = under;
-	}
 
 	public void empty() throws VacuumException {
 		// TODO Auto-generated method stub
@@ -74,18 +66,20 @@ public class Vacuum extends Sprite {
 	}
 	
 
-	public void setMAX_CAPACITY(int M_CAPACITY) throws VacuumException {
-		if (M_CAPACITY<=0) {
-			throw new VacuumException(VacuumException.ERROR_MAX_CAPACITY_VALUE);
+	public void moveTo(int i, int j) throws SpriteException {
+		// TODO Auto-generated method stub
+		
+		setRow (i);
+		setColumn (j);
+		
+	}
 
-			
-		}else
-		{
-			
-			MAX_CAPACITY = M_CAPACITY;
-		}
-		
-		
+	public Sprite getUnder() {
+		return under;
+	}
+
+	public void setUnder(Sprite under) {
+		this.under = under;
 	}
 
 

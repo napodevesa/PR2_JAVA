@@ -7,7 +7,7 @@ public abstract class Sprite extends java.lang.Object {
 	
 	private int row;
 	private int column;
-	private Symbol symbol;
+	Symbol symbol;
 	
 	public Sprite() {
 		// TODO Auto-generated constructor stub
@@ -45,6 +45,7 @@ public abstract class Sprite extends java.lang.Object {
 	}
 	
 	public int getColumn() {
+		
 		return column;
 	}
 	
@@ -68,9 +69,11 @@ public abstract class Sprite extends java.lang.Object {
 	
 	
 	public Symbol getSymbol() {
-		return getSymbol();
+		return symbol;
 	}
 	
+
+
 	public void setSymbol(Symbol symbol) {
 		this.symbol = symbol;
 	}
@@ -81,46 +84,45 @@ public abstract class Sprite extends java.lang.Object {
 	public boolean equals(Object obj) {
 		
 	
-	if (this == obj) return true;
-    if (obj == null) return false;
-    if (getClass() != obj.getClass()) return false;
+	if (this == obj) {
+		return true;
+	}
+    if (obj == null) {
+    	return false;
+    }
+    if (getClass() != obj.getClass()) {
+    	return false;
+    }
     
     final Sprite other = (Sprite)obj;
      
-    if (this.column==other.column && this.row==other.row) {
+    /*
+    if (column==other.column && row==other.row 
+    		&& symbol.getAscii()==other.symbol.getAscii()) {
     	return true;
     }
-   
+   */
 
 	    return false;
 	}
 	
-/*
- * 
- * && this.symbol.getAscii() == other.symbol.getAscii()
- */
-
-
-
 
 	@Override
 	
 	public String toString()  {
 		
-/*
-		Symbol.CORRIDOR.getAscii();
-		Symbol.WALL.getAscii();
-		Symbol.DUMPSTER.getAscii();
-		Symbol.DUSTBALL.getAscii();
-		Symbol.DIRT.getAscii();
-		Symbol.VACUUM.getAscii();
+		Symbol.CORRIDOR.getAscii() ;
 		
-	
-		String str = String.valueOf(Symbol.WALL.getAscii());
+		//this.symbol.getAscii();
+		
+		//char ascii = this.symbol.getAscii();
+		
+		String str = String.valueOf(Symbol.CORRIDOR.getAscii());
 		
 		return str;
+	}	
 		
-	*/	
+	/*
 		
 		int numChar = 6;
         char ascii = 0;
@@ -147,5 +149,6 @@ public abstract class Sprite extends java.lang.Object {
 
 		
 	}
+	*/
 
 }
