@@ -90,12 +90,13 @@ public class Level{
 	
 
 
-	private void setTurns(int parseInt) {
-		// TODO Auto-generated method stub
-		
-	}
 
 	
+
+
+
+
+
 
 	public Object get1DBoard() {
 		// TODO Auto-generated method stub
@@ -170,7 +171,7 @@ public class Level{
 		 return turns;
 	 }
 
-	 private void setTurns​(int turns) throws LevelException{
+	 private void setTurns(int turns) throws LevelException{
 		
 		 if (turns<=0){
 			throw new LevelException(LevelException.ERROR_NUM_TURNS_INCORRECT);
