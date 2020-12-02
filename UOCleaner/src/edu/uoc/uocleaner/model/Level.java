@@ -98,9 +98,10 @@ public class Level{
 
 
 
-	public Object get1DBoard() {
-		// TODO Auto-generated method stub
+	public java.util.List <Sprite> get1DBoard(){
 		return null;
+		// TODO Auto-generated method stub
+		
 	}
 	
 	private int putRowInRange​(int row) {
@@ -112,7 +113,7 @@ public class Level{
 		
 	}
 	
-	public Object getCell(int i, int j) {
+	public Sprite getCell​(int row, int column) {
 		// TODO Auto-generated method stub
 		return null;
 	}
