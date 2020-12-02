@@ -9,6 +9,7 @@ public abstract class Sprite extends java.lang.Object {
 	private int column;
 	Symbol symbol;
 	
+	
 	public Sprite() {
 		// TODO Auto-generated constructor stub
 	}
@@ -111,35 +112,36 @@ public abstract class Sprite extends java.lang.Object {
 	
 	public String toString()  {
 		
-		Symbol.CORRIDOR.getAscii() ;
-		
-		//this.symbol.getAscii();
-		
-		//char ascii = this.symbol.getAscii();
-		
-		String str = String.valueOf(Symbol.CORRIDOR.getAscii());
-		
-		return str;
+		/*
+		Symbol.DUSTBALL.toString()  ;
+		Symbol.DUMPSTER.toString();
+		Symbol.VACUUM.toString() ;
+		Symbol.DIRT.toString() ;
+		Symbol.WALL.toString() ;
+		Symbol.CORRIDOR.toString() ;
+		*/
+	
+		return this.symbol.toString() ;
 	}	
 		
 	/*
 		
-		int numChar = 6;
-        char ascii = 0;
-		
-        switch (numChar) 
+
+        String ascii = "";
+        
+        switch (6) 
         {
-            case 1:  ascii = Symbol.DUSTBALL.getAscii();
+            case 1:  ascii = Symbol.DUSTBALL.toString();
                      break;
-            case 2:  ascii = Symbol.DUMPSTER.getAscii();
+            case 2:  ascii = Symbol.DUMPSTER.toString();
                      break;
-            case 3:  ascii = Symbol.VACUUM.getAscii();
+            case 3:  ascii = Symbol.VACUUM.toString();
                      break;
-            case 4:  ascii = Symbol.DIRT.getAscii();
+            case 4:  ascii = Symbol.DIRT.toString();
                      break;
-            case 5:  ascii = Symbol.WALL.getAscii();
+            case 5:  ascii = Symbol.WALL.toString();
                      break;
-            case 6:  ascii = Symbol.CORRIDOR.getAscii();
+            case 6:  ascii = Symbol.CORRIDOR.toString();
                      break;
            
         }
@@ -149,6 +151,9 @@ public abstract class Sprite extends java.lang.Object {
 
 		
 	}
-	*/
+	
+*/
+
+	
 
 }

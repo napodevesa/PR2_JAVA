@@ -1,6 +1,6 @@
 package edu.uoc.uocleaner.model;
 
-public class Vacuum extends Sprite  {
+public class Vacuum extends Sprite {
 	
 	private int MAX_CAPACITY;
 	private int capacity = 0;
