@@ -1,6 +1,6 @@
 package edu.uoc.uocleaner.model;
 
-public class Vacuum extends Sprite {
+public class Vacuum extends Sprite implements Movable {
 	
 	private int MAX_CAPACITY;
 	private int capacity = 0;
@@ -8,14 +8,17 @@ public class Vacuum extends Sprite {
 	
 	public Vacuum(int row, int column) {
 		// TODO Auto-generated constructor stub
+		super();
 		
 		
 	}
 
 	public Vacuum(int row, int column, int maxCapacity) throws  SpriteException, VacuumException {
 		// TODO Auto-generated constructor stub
-		setRow (row);
-		setColumn (column);
+		super();
+		
+		this.setRow (row);
+		this.setColumn (column);
 		
 		
 	}
@@ -51,6 +54,8 @@ public class Vacuum extends Sprite {
 
 	public void empty() throws VacuumException {
 		// TODO Auto-generated method stub
+		
+		capacity = 0;
 		
 	}
 

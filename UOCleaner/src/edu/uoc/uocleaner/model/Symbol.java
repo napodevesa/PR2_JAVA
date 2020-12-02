@@ -119,21 +119,23 @@ public enum Symbol {
 		}
 	
 
-	public static Symbol valueOf() {
+	public static Symbol valueOf() throws IllegalArgumentException,NullPointerException{
+		
 		return null;
 			
 	}
 	
 		
-	/*
-	public static Symbol[] values() {
-	return null;
+	
+	public static Symbol[] values1() {
+		
+		
+		Symbol[] Symbol= {DUSTBALL, DUMPSTER,VACUUM,DIRT,WALL,CORRIDOR};
+		
+		return Symbol;
 			
 	}
-	*/
 	
-	
-	//AUX
 	
 
 		

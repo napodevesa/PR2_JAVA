@@ -8,6 +8,7 @@ public class Wall extends Sprite {
 		// TODO Auto-generated constructor stub
 		
 		
+		
 	}
 
 }

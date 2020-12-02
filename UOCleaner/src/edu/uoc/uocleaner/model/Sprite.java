@@ -7,7 +7,7 @@ public abstract class Sprite extends java.lang.Object {
 	
 	private int row;
 	private int column;
-	Symbol symbol;
+	private Symbol symbol;
 	
 	
 	public Sprite() {
@@ -16,16 +16,13 @@ public abstract class Sprite extends java.lang.Object {
 
 	
 	protected Sprite (int row, int column, Symbol symbol) throws SpriteException {
-		
-		setRow(row);
-		setColumn(column);
-		setSymbol(symbol);
-		
+			
+		this.setRow(row);
+		this.setColumn(column);
+		this.setSymbol(symbol);
+	
 	}
 	
-	
-
-
 
 	public int getRow() {
 		return row;
@@ -33,7 +30,7 @@ public abstract class Sprite extends java.lang.Object {
 	public void setRow(int row) throws SpriteException {
 		
 		
-		if (row <=0) {
+		if (row <= 0) {
 			throw new SpriteException(SpriteException.ERROR_INDEX_ROW_INCORRECT);
 		}
 		
@@ -47,14 +44,14 @@ public abstract class Sprite extends java.lang.Object {
 	
 	public int getColumn() {
 		
-		return column;
+		return column ;
 	}
 	
 	
 	public void setColumn(int column) throws SpriteException {
 		
 		
-		if (column <=0) {
+		if (column <= 0) {
 			
 			throw new SpriteException(SpriteException.ERROR_INDEX_COLUMN_INCORRECT);
 		}
@@ -83,25 +80,26 @@ public abstract class Sprite extends java.lang.Object {
 @Override
 	
 	public boolean equals(Object obj) {
-		
 	
-	if (this == obj) {
-		return true;
-	}
-    if (obj == null) {
-    	return false;
-    }
-    if (getClass() != obj.getClass()) {
-    	return false;
-    }
+	  final Sprite other = (Sprite)obj;
+	
+		if (this == obj) {
+			return true;
+		}
+	    
+		if (obj == null) {
+	    	return false;
+	    }
+	   
+		if (getClass() != obj.getClass()) {
+	    	return false;
+	    }
     
-    final Sprite other = (Sprite)obj;
-     
-    /*
-    if (column==other.column && row==other.row 
-    		&& symbol.getAscii()==other.symbol.getAscii()) {
-    	return true;
-    }
+	   /*  
+	    if (this.getColumn() == other.getColumn() && this.getRow() == other.getRow() 
+	    		&& symbol.getAscii()== other.symbol.getAscii()) {
+	    	return true;
+	    }
    */
 
 	    return false;
@@ -112,16 +110,16 @@ public abstract class Sprite extends java.lang.Object {
 	
 	public String toString()  {
 		
-		/*
-		Symbol.DUSTBALL.toString()  ;
+	
+
+	 	Symbol.DUSTBALL.toString();
 		Symbol.DUMPSTER.toString();
 		Symbol.VACUUM.toString() ;
 		Symbol.DIRT.toString() ;
 		Symbol.WALL.toString() ;
 		Symbol.CORRIDOR.toString() ;
-		*/
-	
-		return this.symbol.toString() ;
+
+		return Symbol.WALL.toString()  ;
 	}	
 		
 	/*
