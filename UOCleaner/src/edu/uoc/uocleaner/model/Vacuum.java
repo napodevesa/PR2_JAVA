@@ -1,30 +1,53 @@
 package edu.uoc.uocleaner.model;
 
-public class Vacuum extends Sprite implements Movable {
+import java.lang.Object;
+
+public class Vacuum extends Sprite {
 	
-	private int MAX_CAPACITY;
+	 int Max_Capacity;
 	private int capacity = 0;
 	private Sprite under;
 	
-	public Vacuum(int row, int column) {
+
+
+	public Vacuum(int i, int j, int k) throws  SpriteException, VacuumException  {
 		// TODO Auto-generated constructor stub
-		super();
+	}
+	
+
+
+
+	public void empty() throws VacuumException {
+		// TODO Auto-generated method stub
 		
+		if (capacity<0 ) {
+			throw new VacuumException(VacuumException.ERROR_CAPACITY_NEGATIVE_VALUE);
+
+		}
+		else if (capacity>Max_Capacity ) {
+			throw new VacuumException(VacuumException.ERROR_OVERFLOW_MAX_CAPACITY);
+
+		}else {
+			this.capacity=0;
+		}
+		
+	
 		
 	}
 
-	public Vacuum(int row, int column, int maxCapacity) throws  SpriteException, VacuumException {
-		// TODO Auto-generated constructor stub
-		super();
-		
-		this.setRow (row);
-		this.setColumn (column);
-		
-		
-	}
 
 	public int getCapacity() {
 		return capacity;
+	}
+	
+	
+	public Sprite getUnder() {
+		return under;
+		
+	}
+	
+	public int getMaxCapacity() {
+		return Max_Capacity;
 	}
 	
 	public void incCapacity(int cap) throws VacuumException{
@@ -38,36 +61,28 @@ public class Vacuum extends Sprite implements Movable {
 		{
 			capacity += cap;
 					
-					if (capacity > MAX_CAPACITY ) {
+					if (capacity > Max_Capacity ) {
 						throw new VacuumException(VacuumException.ERROR_OVERFLOW_MAX_CAPACITY);
 
 					}
 		}
 		
 	}
-
+	
+	@SuppressWarnings("unused")
 	private void setCapacity​(int capacity) throws VacuumException{
 		
-	}
-	
+		if (capacity<0 ) {
+			throw new VacuumException(VacuumException.ERROR_CAPACITY_NEGATIVE_VALUE);
 
+		}
+		else if (capacity>Max_Capacity ) {
+			throw new VacuumException(VacuumException.ERROR_OVERFLOW_MAX_CAPACITY);
 
-	public void empty() throws VacuumException {
-		// TODO Auto-generated method stub
+		}else {
+			this.capacity=capacity;
+		}
 		
-		capacity = 0;
-		
-	}
-
-	public Integer getMaxCapacity() {
-		// TODO Auto-generated method stub
-		return null;
-	}
-
-	
-
-	public int getMAX_CAPACITY() {
-		return MAX_CAPACITY;
 	}
 	
 
@@ -77,10 +92,6 @@ public class Vacuum extends Sprite implements Movable {
 		setRow (i);
 		setColumn (j);
 		
-	}
-
-	public Sprite getUnder() {
-		return under;
 	}
 
 	public void setUnder(Sprite under) {
