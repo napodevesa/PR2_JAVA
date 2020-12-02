@@ -3,25 +3,31 @@ package edu.uoc.uocleaner.model;
 import java.lang.Object;
 import java.lang.String;
 
-public abstract class Sprite extends java.lang.Object {
+public abstract class Sprite  {
 	
 	private int row;
 	private int column;
 	private Symbol symbol;
 	
 	
-	public Sprite() {
+	
+	protected Sprite (int row, int column, Symbol symbol) throws SpriteException {
+		
+		this.setColumn(column);	
+		this.setRow(row);	
+		this.setSymbol(symbol);
+		
+	}
+	
+	public Sprite(int column2, int column3) {
 		// TODO Auto-generated constructor stub
 	}
 
-	
-	protected Sprite (int row, int column, Symbol symbol) throws SpriteException {
-			
-		this.setRow(row);
-		this.setColumn(column);
-		this.setSymbol(symbol);
-	
+	public int getColumn() {
+		
+		return column ;
 	}
+	
 	
 
 	public int getRow() {
@@ -42,10 +48,6 @@ public abstract class Sprite extends java.lang.Object {
 		
 	}
 	
-	public int getColumn() {
-		
-		return column ;
-	}
 	
 	
 	public void setColumn(int column) throws SpriteException {
@@ -75,7 +77,8 @@ public abstract class Sprite extends java.lang.Object {
 	public void setSymbol(Symbol symbol) {
 		this.symbol = symbol;
 	}
-	
+
+	/*
 	
 @Override
 	
@@ -100,11 +103,11 @@ public abstract class Sprite extends java.lang.Object {
 	    		&& symbol.getAscii()== other.symbol.getAscii()) {
 	    	return true;
 	    }
-   */
+   
 
 	    return false;
 	}
-	
+*/	
 
 	@Override
 	

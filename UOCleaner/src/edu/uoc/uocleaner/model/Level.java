@@ -91,13 +91,6 @@ public class Level{
 
 
 
-	
-
-
-
-
-
-
 	public java.util.List <Sprite> get1DBoard(){
 		return null;
 		// TODO Auto-generated method stub
@@ -168,12 +161,11 @@ public class Level{
 			
 		}
 	 
-	 public int getTurns() {
-		 return turns;
-	 }
-
+	
+	
+	
 	 private void setTurns(int turns) throws LevelException{
-		
+			
 		 if (turns<=0){
 			throw new LevelException(LevelException.ERROR_NUM_TURNS_INCORRECT);
 
@@ -181,8 +173,9 @@ public class Level{
 			 this.turns = turns;
 		 }
 	 }
+	
 	 
-	 public void decTurns() {
+	 public void decTurns() throws LevelException{
 			// TODO Auto-generated method stub
 			
 			turns = turns -1;
@@ -208,7 +201,7 @@ public class Level{
 	
 
 
-	public void decTime() {
+	public void decTime() throws LevelException{
 		// TODO Auto-generated method stub
 		time = time - 1;
 		
@@ -229,6 +222,22 @@ public class Level{
 	public void setCell(int i, int j, Corridor corridor) {
 		// TODO Auto-generated method stub
 		
+	}
+
+
+
+
+	public int getTurns() {
+		// TODO Auto-generated method stub
+		return turns;
+	}
+
+
+
+
+	public DustBall getCell(int i, int j) {
+		// TODO Auto-generated method stub
+		return null;
 	}
 
 	
