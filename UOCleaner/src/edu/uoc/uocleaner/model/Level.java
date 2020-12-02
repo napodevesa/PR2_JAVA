@@ -9,7 +9,7 @@ import java.util.Scanner;
 
 /** 
  * Level/Room class. 
- * @author David Garc�a Sol�rzano
+ * @author David Garc�a Sol�rzano 
  * @version 1.0 
  */
 public class Level{
@@ -57,7 +57,7 @@ public class Level{
 
 		// find the number of rows and columns       
         setNumRows(Integer.parseInt(sc.nextLine()));
-        setNumColumns(Integer.parseInt(sc.nextLine()));
+        setNumRows(Integer.parseInt(sc.nextLine()));
         setImageBackground(sc.nextLine());
         setTurns(Integer.parseInt(sc.nextLine()));
         setTime(Integer.parseInt(sc.nextLine()));
@@ -87,11 +87,148 @@ public class Level{
         	throw new LevelException(LevelException.ERROR_NO_DIRT);
         }        
 	}
+	
+
+
+	private void setTurns(int parseInt) {
+		// TODO Auto-generated method stub
+		
+	}
+
+	
 
 	public Object get1DBoard() {
 		// TODO Auto-generated method stub
 		return null;
-	}	
+	}
 	
-	//TODO
+	private int putRowInRange​(int row) {
+		return row;
+		
+	}
+	private int putColumnInRange​(int column) {
+		return column;
+		
+	}
+	
+	public Object getCell(int i, int j) {
+		// TODO Auto-generated method stub
+		return null;
+	}
+	public void setCell​(Sprite sprite) throws SpriteException{
+		
+	}
+	
+	public void setCell​(int row, int column, Sprite sprite) throws SpriteException{
+		// TODO Auto-generated method stub
+		
+	}
+	
+	public int getNumRows() {
+		return numRows;
+	}
+	
+	private void setNumRows(int numRows) throws LevelException{
+		// TODO Auto-generated method stub
+		
+		if (numRows<=0) {
+			throw new LevelException(LevelException.ERROR_NUM_ROWS_INCORRECT);
+			
+		} else {
+			
+			this.numRows=numRows;
+		}
+		
+	}
+	
+	public int getNumColumns() {
+		return numColumns;
+	}
+	
+	private void setNumColumns​(int numColumns) throws LevelException{
+	
+		if (numColumns<=0) {
+			throw new LevelException(LevelException.ERROR_NUM_COLUMNS_INCORRECT);
+
+		}else {
+			
+			this.numColumns = numColumns;
+		}
+		
+	}
+	 public java.lang.String getImageBackground(){
+		return imageBackground;
+		
+	}
+	 
+	 private void setImageBackground(String nextLine) {
+			// TODO Auto-generated method stub
+			
+		}
+	 
+	 public int getTurns() {
+		 return turns;
+	 }
+
+	 private void setTurns​(int turns) throws LevelException{
+		
+		 if (turns<=0){
+			throw new LevelException(LevelException.ERROR_NUM_TURNS_INCORRECT);
+
+		 }else {
+			 this.turns = turns;
+		 }
+	 }
+	 
+	 public void decTurns() {
+			// TODO Auto-generated method stub
+			
+			turns = turns -1;
+			
+		}
+	 
+	 public int getTime() {
+		 return time;
+	 }
+
+
+	
+	
+	 private void setTime(int time) throws LevelException{
+		if (time<=0){
+			throw new LevelException(LevelException.ERROR_NUM_TIME_INCORRECT);
+
+		 }else {
+			 
+			 this.time = time;
+		 }
+	}
+	
+
+
+	public void decTime() {
+		// TODO Auto-generated method stub
+		time = time - 1;
+		
+	}
+	
+	public java.lang.String toString(){
+		return imageBackground;
+		
+	}
+
+	public void setCell(Corridor corridor) {
+		// TODO Auto-generated method stub
+		
+	}
+
+
+
+	public void setCell(int i, int j, Corridor corridor) {
+		// TODO Auto-generated method stub
+		
+	}
+
+	
+	
 }
