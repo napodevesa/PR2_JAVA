@@ -2,12 +2,15 @@ package edu.uoc.uocleaner.model;
 
 public class Dirt extends Sprite {
 	
-	private int	score =1;
+	private int	score = 5;
+	
+	
 	
 	public Dirt () throws SpriteException {
 		
 		super();
 		// TODO Auto-generated constructor stub
+		setScore(score);
 	}
 
 
@@ -15,16 +18,15 @@ public class Dirt extends Sprite {
 		
 		super(row, column);
 		// TODO Auto-generated constructor stub
+		setScore(score);
 	}
 
 	protected Dirt(int row, int column, Symbol symbol, int score) throws SpriteException {
 		
 		super();
 		// TODO Auto-generated constructor stub
-		setRow(row);
-		setColumn(column);
-		//setSymbol(symbol);
-		setScore (score);
+		
+		
 	}
 
 	

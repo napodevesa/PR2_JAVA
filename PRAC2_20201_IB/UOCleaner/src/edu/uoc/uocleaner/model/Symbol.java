@@ -2,7 +2,10 @@ package edu.uoc.uocleaner.model;
 
 import java.lang.String;
 
-public enum Symbol {
+import java.util.*;
+import java.lang.Object;
+
+public enum Symbol  {
 	
 		DUSTBALL,
 		DUMPSTER,
@@ -13,18 +16,19 @@ public enum Symbol {
 		
 		private char ascii ;
 		private String image;
-		
 	
-		private Symbol() {
+		
+		Symbol() {
 			// TODO Auto-generated constructor stub
-		}
-		
-	
-		private Symbol(char ascii, String image)  {
 			
-				
+		}
+
+		private Symbol(char ascii, String image)  {
+			this.ascii=ascii;
+			this.image=image;		
 		}
 		
+
 		public static Symbol getName(char ascii)  {
 			
 			
@@ -108,22 +112,26 @@ public enum Symbol {
 		
 		}
 	
-
-	public static Symbol valueOf() throws IllegalArgumentException,NullPointerException{
-		
-		return null;
-			
-	}
 	
-
+/*
 	
-	public static Symbol[] values1() {
+	//AUX
+	
+public int symbolOrdinal(Symbol nameSym)  {
 		
+	Symbol symbol[] = Symbol.values();
+	
+	for (Symbol sym : symbol) 
+    { 
+		return sym.ordinal(); 
 		
-		Symbol[] Symbol= {DUSTBALL, DUMPSTER,VACUUM,DIRT,WALL,CORRIDOR};
+    }
+	return 0;	
 		
-		return Symbol;
+}
+*/	
+	
 			
-	}
+		
 	
 }

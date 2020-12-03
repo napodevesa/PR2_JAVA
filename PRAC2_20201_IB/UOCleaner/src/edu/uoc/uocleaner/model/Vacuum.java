@@ -14,12 +14,13 @@ public class Vacuum extends Sprite {
 	}
 
 
-	public Vacuum (int row, int column) throws SpriteException {
+	public Vacuum (int row, int column, int maxCapacity) throws VacuumException, SpriteException {
 		
 		super(row, column);
-		// TODO Auto-generated constructor stub
+		
 	}
 
+	/*
 	public Vacuum(int row, int column, int maxCapacity) throws VacuumException, SpriteException {
 		
 		super();
@@ -28,7 +29,7 @@ public class Vacuum extends Sprite {
 		setColumn(column);
 		
 	}
-
+*/
 
 	public int getCapacity() {
 		return capacity;

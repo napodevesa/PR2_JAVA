@@ -1,10 +1,12 @@
 package edu.uoc.uocleaner.model;
 
+import java.util.*;
+
 public class Sprite {
 	
 	private int	column;
 	private int	row;
-	private Symbol	symbol;
+	private Symbol symbol;
 	
 	
 	public Sprite() {
@@ -19,6 +21,7 @@ public class Sprite {
 	
 	}
 	
+	
 	protected Sprite (int row, int column, Symbol symbol) throws SpriteException {
 		
 		setColumn(column);
@@ -26,8 +29,6 @@ public class Sprite {
 		setSymbol(symbol);
 	
 	}
-	
-	
 
 	public int getColumn() {
 		return column;
@@ -61,24 +62,43 @@ public class Sprite {
 		}
 		
 	}
+	
 
 	public Symbol getSymbol() {
-		return symbol;
+		return symbol; 
 	}
+	
 
 	private void setSymbol(Symbol symbol) {
 		this.symbol = symbol;
 	}
 	
 	//@Override
-	public boolean equals​ (Object other) {
+	public boolean equals​ (Object obj) {
+		
+		Sprite sprite = (Sprite) obj;
+		
+		if(this == sprite || 
+				(this.getRow() == sprite.getRow() && 
+				this.getColumn() == sprite.getColumn() &&
+				this.getSymbol() == sprite.getSymbol())
+		  ){
+			return true;
+		
+		}
+		
 		return false;
 		
 	}
 	
 	//@Override
 	public String toString() {
-		return null;
+		
+
+		Symbol a = this.getSymbol();
+		String str = String.valueOf(a);
+		
+		return str;
 		
 	}
 	

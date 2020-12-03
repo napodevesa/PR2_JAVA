@@ -4,12 +4,13 @@ import java.io.File;
 import java.io.FileNotFoundException;
 import java.util.ArrayList;
 import java.util.Arrays;
+import java.util.Collection;
 import java.util.List;
 import java.util.Scanner;
 
 /** 
  * Level/Room class. 
- * @author David García Solórzano
+ * @author David Garcï¿½a Solï¿½rzano
  * @version 1.0 
  */
 public class Level{
@@ -86,7 +87,146 @@ public class Level{
         if(!isDirt) {
         	throw new LevelException(LevelException.ERROR_NO_DIRT);
         }        
-	}	
+	}
+
 	
-	//TODO
+
+	private void setTime(int parseInt) throws LevelException {
+		// TODO Auto-generated method stub
+		if (time < 0) {
+			throw new LevelException(LevelException.ERROR_NUM_TIME_INCORRECT); 
+		}else {
+			this.time= parseInt;
+		}
+		
+	}
+
+
+
+	private void setTurns(int parseInt) throws LevelException {
+		// TODO Auto-generated method stub
+		if (turns < 0) {
+			throw new LevelException(LevelException.ERROR_NUM_TURNS_INCORRECT); 
+		}else {
+			this.turns= parseInt;
+		}
+		
+	}
+
+
+
+	private void setImageBackground(String nextLine) {
+		// TODO Auto-generated method stub
+		this.imageBackground = nextLine;
+		
+	}
+
+	private void setNumColumns(int parseInt) throws LevelException {
+		// TODO Auto-generated method stub
+		if (numColumns<=0) {
+			throw new LevelException(LevelException.ERROR_NUM_COLUMNS_INCORRECT); 
+		}else {
+			this.numColumns= parseInt;
+		}
+		
+	}
+
+
+
+	private void setNumRows(int parseInt) throws LevelException{
+		
+		if (numRows<=0) {
+			throw new LevelException(LevelException.ERROR_NUM_ROWS_INCORRECT); 
+		}else {
+			
+			this.numRows = parseInt;
+		}
+		
+	}
+
+
+
+	public List<Sprite> get1DBoard() {
+		// TODO Auto-generated method stub
+		List<Sprite> sprite = new ArrayList <Sprite>();
+		return sprite;
+	}
+
+
+	public Sprite getCell(int i, int j) {
+		// TODO Auto-generated method stub
+		return null;
+	}
+
+
+
+	public void setCellâ€‹(Sprite sprite) throws SpriteException {
+		// TODO Auto-generated method stub
+		
+		
+	}
+
+	public void setCell(int i, int j, Sprite sprite) throws SpriteException{
+		// TODO Auto-generated method stub
+		
+	}
+
+
+
+	public int getNumRows() {
+		// TODO Auto-generated method stub
+		return numRows;
+	}
+	
+
+
+	public int getNumColumns() {
+		// TODO Auto-generated method stub
+		return numColumns;
+	}
+
+
+	public String getImageBackground() {
+		// TODO Auto-generated method stub
+		return imageBackground;
+	}
+	
+	
+
+	public int getTurns() {
+		// TODO Auto-generated method stub
+		return turns;
+	}
+	
+	
+	
+	public void decTurns() throws LevelException{
+	
+		if (turns < 0) {
+			throw new LevelException(LevelException.ERROR_NUM_TURNS_INCORRECT); 
+		}else {
+			turns= turns-1;
+		}
+	}
+	
+	public int getTime() {
+		return time;
+	}
+
+	
+	public void decTime() throws LevelException{
+		
+		if (time < 0) {
+			throw new LevelException(LevelException.ERROR_NUM_TIME_INCORRECT); 
+		}else {
+			time= time-1;
+		}
+	}
+
+
+	public void setCell(Corridor corridor) {
+		// TODO Auto-generated method stub
+		
+	}
+	
 }

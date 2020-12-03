@@ -34,16 +34,16 @@ class LevelTest {
 	    	str.append(c.toString());
 	    });
 		
-	    assertEquals("·   D##  · ########· ##    ·· @####  ##   ·    # ··  ##  ##########  ##  ########### ##        # V     ·    #   #### #   ##   # ·    #   # ### ·### ·#   #     #",str.toString());
+	    assertEquals("ï¿½   D##  ï¿½ ########ï¿½ ##    ï¿½ï¿½ @####  ##   ï¿½    # ï¿½ï¿½  ##  ##########  ##  ########### ##        # V     ï¿½    #   #### #   ##   # ï¿½    #   # ### ï¿½### ï¿½#   #     #",str.toString());
 	}
 
 	@Test
 	void testGetCell() {
 		assertEquals("D",level.getCell(0, 4).toString());
 		assertEquals("D",level.getCell(-1, 4).toString()); //(0,4)
-		assertEquals("·",level.getCell(0, -1).toString()); //(0,0)
+		assertEquals("ï¿½",level.getCell(0, -1).toString()); //(0,0)
 		assertEquals("#",level.getCell(0, 80).toString()); //last sprite of the first row
-		assertEquals("·",level.getCell(-20, -1).toString());//first sprite (0,0)
+		assertEquals("ï¿½",level.getCell(-20, -1).toString());//first sprite (0,0)
 		assertEquals("#",level.getCell(100, 80).toString()); //last sprite of the last row
 	}
 
@@ -124,7 +124,7 @@ class LevelTest {
 
 	@Test
 	void testGetTime() {
-		assertEquals(200,level.getTime());
+		assertEquals(200,level.getTurns());
 	}
 
 	@Test
@@ -135,9 +135,9 @@ class LevelTest {
 			fail("testDecTime failed - Case 1");
 			e.printStackTrace();
 		}
-		assertEquals(199,level.getTime());
+		assertEquals(199,level.getTurns());
 		
-		for(int i = level.getTime(); i>0; i--) {
+		for(int i = level.getTurns(); i>0; i--) {
 			try {
 				level.decTime();
 			} catch (LevelException e) {				
@@ -153,7 +153,7 @@ class LevelTest {
 	@Test
 	void testToString() {
 		assertEquals(level.toString().lastIndexOf("\n"),level.toString().length()-1);
-		assertEquals("·   D##  · ########· ##    ·· @####  ##   ·    # ··  ##  ##########  ##  ########### ##        # V     ·    #   #### #   ##   # ·    #   # ### ·### ·#   #     #",level.toString().replaceAll("\n|\r\n", ""));
+		assertEquals("ï¿½   D##  ï¿½ ########ï¿½ ##    ï¿½ï¿½ @####  ##   ï¿½    # ï¿½ï¿½  ##  ##########  ##  ########### ##        # V     ï¿½    #   #### #   ##   # ï¿½    #   # ### ï¿½### ï¿½#   #     #",level.toString().replaceAll("\n|\r\n", ""));
 	}
 
 }
