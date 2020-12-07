@@ -13,19 +13,21 @@ public enum Symbol  {
 		DIRT,
 		WALL,
 		CORRIDOR;
+
 		
 		private char ascii ;
 		private String image;
 	
-		
 		Symbol() {
 			// TODO Auto-generated constructor stub
-			
 		}
-
+		
 		private Symbol(char ascii, String image)  {
-			this.ascii=ascii;
-			this.image=image;		
+			
+			getName(ascii);
+			getImage();
+			getAscii();
+			
 		}
 		
 
@@ -113,9 +115,8 @@ public enum Symbol  {
 		}
 	
 	
-/*
-	
 	//AUX
+
 	
 public int symbolOrdinal(Symbol nameSym)  {
 		
@@ -129,9 +130,7 @@ public int symbolOrdinal(Symbol nameSym)  {
 	return 0;	
 		
 }
-*/	
 	
-			
-		
+	
 	
 }

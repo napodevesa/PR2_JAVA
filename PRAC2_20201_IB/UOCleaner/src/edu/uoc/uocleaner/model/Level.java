@@ -1,6 +1,7 @@
 package edu.uoc.uocleaner.model;
 
 import java.io.File;
+import java.io.FileInputStream;
 import java.io.FileNotFoundException;
 import java.util.ArrayList;
 import java.util.Arrays;
@@ -54,7 +55,9 @@ public class Level{
 		boolean isDumpster = false, isDirt = false;
 		int numVacuums = 0;		
 		
-		Scanner sc = new Scanner(new File(fileName));
+		Scanner sc = new Scanner(new FileInputStream(fileName), "UTF-8");
+		
+		//Scanner sc = new Scanner(new File(fileName));
 
 		// find the number of rows and columns       
         setNumRows(Integer.parseInt(sc.nextLine()));
@@ -88,27 +91,33 @@ public class Level{
         	throw new LevelException(LevelException.ERROR_NO_DIRT);
         }        
 	}
+	
+	
+	
 
 	
 
-	private void setTime(int parseInt) throws LevelException {
+	private void setTime(int time) throws LevelException {
+	
 		// TODO Auto-generated method stub
 		if (time < 0) {
 			throw new LevelException(LevelException.ERROR_NUM_TIME_INCORRECT); 
 		}else {
-			this.time= parseInt;
+			this.time= time;
+		
 		}
 		
 	}
 
 
 
-	private void setTurns(int parseInt) throws LevelException {
+	private void setTurns(int turns) throws LevelException {
+	
 		// TODO Auto-generated method stub
 		if (turns < 0) {
 			throw new LevelException(LevelException.ERROR_NUM_TURNS_INCORRECT); 
 		}else {
-			this.turns= parseInt;
+			this.turns= turns;
 		}
 		
 	}
@@ -121,25 +130,25 @@ public class Level{
 		
 	}
 
-	private void setNumColumns(int parseInt) throws LevelException {
+	private void setNumColumns(int numColumns) throws LevelException {
 		// TODO Auto-generated method stub
 		if (numColumns<=0) {
 			throw new LevelException(LevelException.ERROR_NUM_COLUMNS_INCORRECT); 
 		}else {
-			this.numColumns= parseInt;
+			this.numColumns= numColumns;
 		}
 		
 	}
 
 
 
-	private void setNumRows(int parseInt) throws LevelException{
+	private void setNumRows(int numRows) throws LevelException{
 		
-		if (numRows<=0) {
+		if (numRows <= 0) {
 			throw new LevelException(LevelException.ERROR_NUM_ROWS_INCORRECT); 
 		}else {
 			
-			this.numRows = parseInt;
+			this.numRows = numRows;
 		}
 		
 	}
@@ -147,54 +156,55 @@ public class Level{
 
 
 	public List<Sprite> get1DBoard() {
-		// TODO Auto-generated method stub
+		
 		List<Sprite> sprite = new ArrayList <Sprite>();
 		return sprite;
 	}
+	
+	
 
 
 	public Sprite getCell(int i, int j) {
-		// TODO Auto-generated method stub
+		
 		return null;
 	}
 
 
 
 	public void setCell​(Sprite sprite) throws SpriteException {
-		// TODO Auto-generated method stub
+		
 		
 		
 	}
 
 	public void setCell(int i, int j, Sprite sprite) throws SpriteException{
-		// TODO Auto-generated method stub
+		
 		
 	}
 
 
 
 	public int getNumRows() {
-		// TODO Auto-generated method stub
+		
 		return numRows;
 	}
 	
 
 
 	public int getNumColumns() {
-		// TODO Auto-generated method stub
+		
 		return numColumns;
 	}
 
 
 	public String getImageBackground() {
-		// TODO Auto-generated method stub
+		
 		return imageBackground;
 	}
 	
 	
 
 	public int getTurns() {
-		// TODO Auto-generated method stub
 		return turns;
 	}
 	
@@ -202,10 +212,10 @@ public class Level{
 	
 	public void decTurns() throws LevelException{
 	
+		turns = turns -1 ;
+		
 		if (turns < 0) {
 			throw new LevelException(LevelException.ERROR_NUM_TURNS_INCORRECT); 
-		}else {
-			turns= turns-1;
 		}
 	}
 	
@@ -216,17 +226,27 @@ public class Level{
 	
 	public void decTime() throws LevelException{
 		
+		time = time - 1 ;
+		
 		if (time < 0) {
 			throw new LevelException(LevelException.ERROR_NUM_TIME_INCORRECT); 
-		}else {
-			time= time-1;
 		}
 	}
+
+
+
+
 
 
 	public void setCell(Corridor corridor) {
 		// TODO Auto-generated method stub
 		
 	}
+
+
+	
+
+
+	
 	
 }

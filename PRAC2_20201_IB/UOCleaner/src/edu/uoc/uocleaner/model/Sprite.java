@@ -6,18 +6,22 @@ public class Sprite {
 	
 	private int	column;
 	private int	row;
-	private Symbol symbol;
+	private Symbol symbol ;
 	
 	
 	public Sprite() {
 		// TODO Auto-generated constructor stub		
+	
 	}
+	
 	
 	
 	protected Sprite (int row, int column) throws SpriteException {
 		
 		setColumn(column);
-		setRow(row);		
+		setRow(row);
+		
+		
 	
 	}
 	
@@ -65,13 +69,17 @@ public class Sprite {
 	
 
 	public Symbol getSymbol() {
-		return symbol; 
+		
+		
+		return symbol;
 	}
 	
 
 	private void setSymbol(Symbol symbol) {
+
 		this.symbol = symbol;
 	}
+	
 	
 	//@Override
 	public boolean equals​ (Object obj) {
@@ -94,8 +102,7 @@ public class Sprite {
 	//@Override
 	public String toString() {
 		
-
-		Symbol a = this.getSymbol();
+		Symbol a = getSymbol();
 		String str = String.valueOf(a);
 		
 		return str;
