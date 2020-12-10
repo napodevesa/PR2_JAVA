@@ -4,16 +4,13 @@ public class Dumpster extends Sprite {
 	
 	private int	load=0;
 	
-	public Dumpster() throws SpriteException {
-		
-		super();
-		// TODO Auto-generated constructor stub
-	}
+	
 	
 	public Dumpster(int row, int column) throws SpriteException {
 		
-		super(row, column);
-		// TODO Auto-generated constructor stub
+		super(row, column, Symbol.DUMPSTER);
+
+
 	}
 
 	public int getLoad() {

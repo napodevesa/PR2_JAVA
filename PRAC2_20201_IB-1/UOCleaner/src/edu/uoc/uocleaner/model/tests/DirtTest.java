@@ -118,6 +118,6 @@ class DirtTest {
 
 	@Test
 	void testToString() {
-		assertEquals("·",dirt.toString());
+		assertEquals("ï¿½",dirt.toString());
 	}
 }

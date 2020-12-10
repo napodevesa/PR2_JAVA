@@ -2,34 +2,36 @@ package edu.uoc.uocleaner.model;
 
 import java.lang.String;
 
-import java.util.*;
-import java.lang.Object;
+
+///
 
 public enum Symbol  {
 	
-		DUSTBALL,
-		DUMPSTER,
-		VACUUM,
-		DIRT,
-		WALL,
-		CORRIDOR;
+	DUSTBALL('@', "dustball.png" ),
+	
+	DUMPSTER('D', "dumpster.png" ),
+	
+	VACUUM('V', "huocver.png" ),
+	
+	DIRT('�', "dirt.png" ),
+	
+	WALL('#', "" ),
+	
+	CORRIDOR(' ', "" );
 
 		
 		private char ascii ;
 		private String image;
-	
-		Symbol() {
-			// TODO Auto-generated constructor stub
-		}
+		
+
 		
 		private Symbol(char ascii, String image)  {
 			
-			getName(ascii);
-			getImage();
-			getAscii();
-			
+			this.ascii = ascii;
+			this.image = image;
+
 		}
-		
+
 
 		public static Symbol getName(char ascii)  {
 			
@@ -82,7 +84,7 @@ public enum Symbol  {
 			
 		}
 	
-		public java.lang.String getImage()  {
+		public String getImage()  {
 			
 			DUSTBALL.image = "dustball.png";
 			DUMPSTER.image = "dumpster.png";
@@ -91,46 +93,77 @@ public enum Symbol  {
 			WALL.image = "";
 			CORRIDOR.image = "";
 			
-			
 			return this.image;
 					
 		}
 		
 		
+		
+		
 	@Override
 		
 	public String toString()  {
-		
-		DUSTBALL.ascii =  '@';
-		DUMPSTER.ascii = 'D';
-		VACUUM.ascii = 'V';
-		DIRT.ascii = '�';
-		WALL.ascii = '#';
-		CORRIDOR.ascii = ' ';
-		
-		String str = String.valueOf(this.ascii);
+
+		String str = String.valueOf(getAscii());
 		
 		return str;
 		
 		}
 	
+
+	public static Symbol valueOf​(String name) {
+		
+		if ("DUSTBALL"== name){
+			return DUSTBALL;
+		
+		}
+		
+		if ("DUMPSTER" ==  name){
+			return DUMPSTER;
+		
+		}
+		
+		if ("VACUUM" == name){
+			return VACUUM;
+		
+		}
+		if ("DIRT" == name){
+			return DIRT;
+		
+		}
+		
+		if ("WALL" == name){
+			return WALL;
+		
+		}
+		if ("CORRIDOR" == name){
+			return CORRIDOR;
+		
+		}
+		
+		
+		return null ;
+		
+		
+	}
 	
+
 	//AUX
 
 	
-public int symbolOrdinal(Symbol nameSym)  {
+	public int symbolOrdinal(Symbol nameSym)  {
 		
-	Symbol symbol[] = Symbol.values();
-	
-	for (Symbol sym : symbol) 
-    { 
-		return sym.ordinal(); 
+		Symbol symbol[] = Symbol.values();
 		
-    }
+		for (Symbol sym : symbol) 
+	    { 
+			return sym.ordinal(); 
+			
+	    }
 	return 0;	
 		
-}
-	
-	
+	}
+
+
 	
 }

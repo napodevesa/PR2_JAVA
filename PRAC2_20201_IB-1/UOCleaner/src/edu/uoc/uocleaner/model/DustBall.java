@@ -5,15 +5,12 @@ import java.util.Collection;
 
 public class DustBall extends Dirt implements Movable  {
 
-	public DustBall() throws SpriteException {
-		super();
-		// TODO Auto-generated constructor stub
-	}
+
 
 	public DustBall (int row, int column) throws SpriteException {
 		
-		super(row, column);
-		// TODO Auto-generated constructor stub
+		super(row, column, Symbol.DUSTBALL, SPEED);
+		getScore();
 	}
 	
 	public void moveTo​(int row, int col) throws SpriteException{

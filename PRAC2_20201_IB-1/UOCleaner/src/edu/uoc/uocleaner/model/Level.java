@@ -8,6 +8,7 @@ import java.util.Arrays;
 import java.util.Collection;
 import java.util.List;
 import java.util.Scanner;
+import java.util.stream.Stream;
 
 /** 
  * Level/Room class. 
@@ -92,11 +93,9 @@ public class Level{
         }        
 	}
 	
-	
-	
+
 
 	
-
 	private void setTime(int time) throws LevelException {
 	
 		// TODO Auto-generated method stub
@@ -125,13 +124,15 @@ public class Level{
 
 
 	private void setImageBackground(String nextLine) {
-		// TODO Auto-generated method stub
+		
+		
 		this.imageBackground = nextLine;
 		
 	}
 
 	private void setNumColumns(int numColumns) throws LevelException {
-		// TODO Auto-generated method stub
+	
+		
 		if (numColumns<=0) {
 			throw new LevelException(LevelException.ERROR_NUM_COLUMNS_INCORRECT); 
 		}else {
@@ -157,8 +158,17 @@ public class Level{
 
 	public List<Sprite> get1DBoard() {
 		
-		List<Sprite> sprite = new ArrayList <Sprite>();
-		return sprite;
+		
+		
+		
+		Sprite [] s = convert2DArrayTo1DArrayV1 ( this.board);
+		
+		List<Sprite> list = Arrays.asList(s);
+		
+		return list;
+		
+		
+        
 	}
 	
 	
@@ -166,15 +176,18 @@ public class Level{
 
 	public Sprite getCell(int i, int j) {
 		
-		return null;
+		return null ;
+		
+		
 	}
 
 
 
 	public void setCell​(Sprite sprite) throws SpriteException {
 		
-		
-		
+
+	
+	
 	}
 
 	public void setCell(int i, int j, Sprite sprite) throws SpriteException{
@@ -212,7 +225,7 @@ public class Level{
 	
 	public void decTurns() throws LevelException{
 	
-		turns = turns -1 ;
+		this.turns = turns -1 ;
 		
 		if (turns < 0) {
 			throw new LevelException(LevelException.ERROR_NUM_TURNS_INCORRECT); 
@@ -226,7 +239,7 @@ public class Level{
 	
 	public void decTime() throws LevelException{
 		
-		time = time - 1 ;
+		this.time = time - 1 ;
 		
 		if (time < 0) {
 			throw new LevelException(LevelException.ERROR_NUM_TIME_INCORRECT); 
@@ -242,9 +255,47 @@ public class Level{
 		// TODO Auto-generated method stub
 		
 	}
-
-
 	
+	
+	@Override
+
+	public String toString(){
+		
+		return board.toString();
+		
+	}
+	
+// AUX 
+	
+public static Sprite[] convert2DArrayTo1DArrayV1 ( Sprite[][] array ) {
+		
+		int totalLength = 0;
+		
+		
+		for ( Sprite[] arr : array ) 
+		
+		{
+			
+			totalLength += arr.length;
+		}
+		
+		Sprite[] result = new Sprite [ totalLength ] ;
+		
+		int idx = 0;
+		
+		
+		for ( Sprite[] arr : array ) 
+		
+		{
+			
+			for ( Sprite i : arr ) {
+				
+				result [ idx++ ] = i;
+			}
+		}
+		
+		return result;
+	}
 
 
 	

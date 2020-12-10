@@ -8,31 +8,16 @@ public class Sprite {
 	private int	row;
 	private Symbol symbol ;
 	
-	
-	public Sprite() {
-		// TODO Auto-generated constructor stub		
-	
-	}
-	
-	
-	
-	protected Sprite (int row, int column) throws SpriteException {
-		
-		setColumn(column);
-		setRow(row);
-		
-		
-	
-	}
-	
-	
+
+
 	protected Sprite (int row, int column, Symbol symbol) throws SpriteException {
 		
-		setColumn(column);
-		setRow(row);
-		setSymbol(symbol);
-	
+		this.row = row;
+		this.column = column;
+		this.symbol= symbol;
+		
 	}
+	
 
 	public int getColumn() {
 		return column;
@@ -68,10 +53,9 @@ public class Sprite {
 	}
 	
 
-	public Symbol getSymbol() {
-		
-		
+	public Symbol getSymbol() {		
 		return symbol;
+
 	}
 	
 
@@ -81,34 +65,32 @@ public class Sprite {
 	}
 	
 	
-	//@Override
-	public boolean equals​ (Object obj) {
+	@Override
+	public boolean equals(Object obj) {
+		Sprite s = (Sprite) obj;
 		
-		Sprite sprite = (Sprite) obj;
+		if(this == s || 
+				(this.getRow() == s.getRow() && 
+				this.getColumn() == s.getColumn()) &&
+				this.getSymbol() == s.getSymbol() )
+
 		
-		if(this == sprite || 
-				(this.getRow() == sprite.getRow() && 
-				this.getColumn() == sprite.getColumn() &&
-				this.getSymbol() == sprite.getSymbol())
-		  ){
+		  {
 			return true;
-		
 		}
 		
-		return false;
-		
+		return false;		
 	}
 	
-	//@Override
-	public String toString() {
+	
+		@Override
+		public String toString() {
 		
-		Symbol a = getSymbol();
-		String str = String.valueOf(a);
+		String a =	String.valueOf(symbol.getAscii());
 		
-		return str;
+		return a;
 		
 	}
-	
 	
 
 
