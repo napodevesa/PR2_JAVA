@@ -1,8 +1,7 @@
 package edu.uoc.uocleaner.model;
 
-import java.util.*;
 
-public class Sprite {
+public abstract class Sprite extends java.lang.Object {
 	
 	private int	column;
 	private int	row;
@@ -14,13 +13,12 @@ public class Sprite {
 		
 		this.row = row;
 		this.column = column;
-		this.symbol= symbol;
-		
+		setSymbol(symbol);		
 	}
 	
 
 	public int getColumn() {
-		return column;
+		return this.column;
 	}
 
 	public void setColumn(int column) throws SpriteException{
@@ -36,7 +34,7 @@ public class Sprite {
 	}
 
 	public int getRow() {
-		return row;
+		return this.row;
 	}
 
 	public void setRow(int row) throws SpriteException {
@@ -54,7 +52,7 @@ public class Sprite {
 	
 
 	public Symbol getSymbol() {		
-		return symbol;
+		return this.symbol;
 
 	}
 	

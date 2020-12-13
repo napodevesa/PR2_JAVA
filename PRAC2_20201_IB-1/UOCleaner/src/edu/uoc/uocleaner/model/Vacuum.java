@@ -1,110 +1,89 @@
 package edu.uoc.uocleaner.model;
 
-public class Vacuum extends Sprite {
+public class Vacuum extends Sprite implements Movable{
+
 	
-	private int	capacity = 0;
-	private int	MAX_CAPACITY;
+	private final int MAX_CAPACITY;
+	private int capacity;
 	private Sprite under;
 	
 	
-	
-
-	public Vacuum (int row, int column, int maxCapacity) throws VacuumException, SpriteException {
+	public Vacuum(int row, int column, int maxCapacity) throws VacuumException, SpriteException {
 		
-		super(row, column,Symbol.VACUUM);
-		setCapacity(maxCapacity);
-
-	}
-
-
-	public void setCapacity(int capacity) throws VacuumException {
+		super(row, column, Symbol.VACUUM);
 		
-	
-		
-		if (capacity<=0)
-		
-		{	
+		if(maxCapacity<= 0) 
+			
+		{
 			throw new VacuumException(VacuumException.ERROR_MAX_CAPACITY_VALUE);
-		} 
-		
-		else
-		
-		
-		{	
-		
-			this.capacity = capacity;
 		}
 		
-		
-	}
-
-
-
-	public void incCapacity(int capacity)throws VacuumException  {
-		// TODO Auto-generated method stub
-		
-		if (capacity<0){
-			throw new VacuumException(VacuumException.ERROR_CAPACITY_NEGATIVE_VALUE);
-
-		}
-		if (MAX_CAPACITY<capacity){
-			throw new VacuumException(VacuumException.ERROR_OVERFLOW_MAX_CAPACITY);
-
-		}
-		else {
-		
-			this.capacity +=capacity;
-				if (this.capacity<0) {
-					throw new VacuumException(VacuumException.ERROR_INC_CAPACITY_NEGATIVE_VALUE);
-
-				}
-			 
+		else 
+		{
+			MAX_CAPACITY = maxCapacity;
 		}
 		
-		
-	}
-
-
-	public Sprite getUnder() {
-		
-		
-		
-		return under;
-	}
-
-
-	public void setUnder(Sprite under) {
-		
-
-		this.under = under;
-		
-	}
-
-
-	public void empty() throws VacuumException{
-		
-	 setCapacity(0);
-	 
-		
-	}
-	
-	
-	public int getMaxCapacity() {
-		return capacity;
-		
+		under = new Corridor(row, column);
 	}
 	
 	public int getCapacity() {
+		
+		return this.capacity;
+	
+	}
+	
+	public void setCapacity(int capacity) throws VacuumException{
+	
+		if(capacity > MAX_CAPACITY) 
+		{
+			throw new VacuumException(VacuumException.ERROR_OVERFLOW_MAX_CAPACITY);
+		}
+		
+		if(capacity<0) 
+		{
+			throw new VacuumException(VacuumException.ERROR_CAPACITY_NEGATIVE_VALUE);
+		}
+		this.capacity = capacity;
+	}
+	
+	public void incCapacity(int i) throws VacuumException{
+		
+		if(i<0) 
+			
+		{
+			throw new VacuumException(VacuumException.ERROR_INC_CAPACITY_NEGATIVE_VALUE);
+		}
+		
+		setCapacity( i + getCapacity());
+	}
+	
+	
+	public void empty() throws VacuumException{
+		
+		this.capacity= 0;
+	
+	}
+	
+	public void setUnder(Sprite under) {
+		this.under = under;
+	}
+	
+	public Sprite getUnder() {
+		
+		return this.under;
+	}
+	
+
+	
+	public int getMaxCapacity() {
 		return MAX_CAPACITY;
 	}
 
-
-	public void moveTo(int i, int j)throws SpriteException {
+	
+	public void moveTo(int row, int column) throws SpriteException {
 		
-	setRow(i);
-	setColumn(j);
+		setRow(row);
+		setColumn(column);
 	
 	}
-
-
 }

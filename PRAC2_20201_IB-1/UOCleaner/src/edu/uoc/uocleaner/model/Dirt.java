@@ -2,22 +2,23 @@ package edu.uoc.uocleaner.model;
 
 public class Dirt extends Sprite {
 	
-	private int	score = 1;
+	private int	score;
 	
 
 
 	public Dirt(int row, int column) throws SpriteException {
 		
 		super(row, column, Symbol.DIRT);
+		score = 1;
 
 		
 	}
 
 	protected Dirt(int row, int column, Symbol symbol, int score) throws SpriteException {
 		
-		super(row,column, Symbol.DIRT);
+		super(row, column, symbol);
 		
-		this.score = score;
+		setScore(score);
 		
 
 		
@@ -26,7 +27,7 @@ public class Dirt extends Sprite {
 	
 
 	public int getScore() {
-		return score;
+		return this.score;
 	}
 
 	protected void setScore(int score) {

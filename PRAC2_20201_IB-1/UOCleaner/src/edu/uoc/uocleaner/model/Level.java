@@ -99,7 +99,8 @@ public class Level{
 	private void setTime(int time) throws LevelException {
 	
 		// TODO Auto-generated method stub
-		if (time < 0) {
+		if (time < 0) 
+		{
 			throw new LevelException(LevelException.ERROR_NUM_TIME_INCORRECT); 
 		}else {
 			this.time= time;
@@ -125,7 +126,6 @@ public class Level{
 
 	private void setImageBackground(String nextLine) {
 		
-		
 		this.imageBackground = nextLine;
 		
 	}
@@ -133,9 +133,12 @@ public class Level{
 	private void setNumColumns(int numColumns) throws LevelException {
 	
 		
-		if (numColumns<=0) {
+		if (numColumns<=0) 
+		{
 			throw new LevelException(LevelException.ERROR_NUM_COLUMNS_INCORRECT); 
-		}else {
+		}
+		else 
+		{
 			this.numColumns= numColumns;
 		}
 		
@@ -145,10 +148,12 @@ public class Level{
 
 	private void setNumRows(int numRows) throws LevelException{
 		
-		if (numRows <= 0) {
+		if (numRows <= 0) 
+		{
 			throw new LevelException(LevelException.ERROR_NUM_ROWS_INCORRECT); 
-		}else {
-			
+		}
+		else 
+		{
 			this.numRows = numRows;
 		}
 		
@@ -157,44 +162,84 @@ public class Level{
 
 
 	public List<Sprite> get1DBoard() {
-		
-		
-		
-		
+
 		Sprite [] s = convert2DArrayTo1DArrayV1 ( this.board);
 		
 		List<Sprite> list = Arrays.asList(s);
 		
 		return list;
-		
-		
-        
+
 	}
 	
 	
-
 
 	public Sprite getCell(int i, int j) {
 		
-		return null ;
-		
+		return board[putRowInRange(i)][putColumnInRange(j)];
 		
 	}
 
 
-
-	public void setCell​(Sprite sprite) throws SpriteException {
+	public void setCell​(Sprite sprite) throws SpriteException{
 		
-
-	
+		int a = sprite.getRow();	
+		int b = sprite.getColumn();
+		
+		putRowInRange(a);
+		putColumnInRange(b);
+		
+		board[a][b] = sprite;
 	
 	}
+
 
 	public void setCell(int i, int j, Sprite sprite) throws SpriteException{
 		
+		int a = putRowInRange(i);
+		int b = putColumnInRange(j);
+		
+		sprite.setRow(a);
+		sprite.setColumn(b);
+		
+		board[a][b] = sprite;
 		
 	}
 
+	private int putColumnInRange(int j) {
+
+		if (j<0) {
+		
+			j=0;
+		}
+		
+		else if (numColumns<=j) 
+		
+		{
+			j=numColumns -1;
+			
+		}
+		
+		return j;
+	}
+
+
+	private int putRowInRange(int i) {
+		
+		if (i<0) 
+		{
+			i=0;
+		}
+		
+		else if (numRows<=i) 
+		
+		{
+			
+			i=numRows -1;
+			
+		}
+		
+		return i;
+	}
 
 
 	public int getNumRows() {
@@ -202,7 +247,6 @@ public class Level{
 		return numRows;
 	}
 	
-
 
 	public int getNumColumns() {
 		
@@ -248,26 +292,29 @@ public class Level{
 
 
 
-
-
-
-	public void setCell(Corridor corridor) {
-		// TODO Auto-generated method stub
-		
-	}
-	
-	
-	@Override
+	//@Override
 
 	public String toString(){
 		
-		return board.toString();
 		
+		String aString="";
+		
+		for(int row = 0; row < board.length; row++) {
+		     for(int col = 0; col < board[row].length; col++) {
+		        aString += board[row][col];
+		     }
+		     aString += "\r\n";
+		  }
+		  return aString;
+		
+
 	}
 	
-// AUX 
+
 	
-public static Sprite[] convert2DArrayTo1DArrayV1 ( Sprite[][] array ) {
+		// AUX 
+	
+		public static Sprite[] convert2DArrayTo1DArrayV1 ( Sprite[][] array ) {
 		
 		int totalLength = 0;
 		

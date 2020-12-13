@@ -2,23 +2,26 @@ package edu.uoc.uocleaner.model;
 
 public class Dumpster extends Sprite {
 	
-	private int	load=0;
+	private int	load;
 	
 	
 	
 	public Dumpster(int row, int column) throws SpriteException {
 		
 		super(row, column, Symbol.DUMPSTER);
+		
+		load = 0;
 
 
 	}
 
 	public int getLoad() {
-		return load;
+		return this.load;
 	}
 
 	public void setLoad(int load) throws DumpsterException {
-		if (load<0) {
+		if (load<0) 
+		{
 			throw new DumpsterException(DumpsterException.ERROR_LOAD_NEGATIVE_VALUE);
 
 		}else 
@@ -30,16 +33,8 @@ public class Dumpster extends Sprite {
 	
 	
 
-	public void addLoad(int i) throws DumpsterException{
-		// TODO Auto-generated method stub
-		
-		if (i < 0) {
-			throw new DumpsterException(DumpsterException.ERROR_LOAD_NEGATIVE_VALUE);
-
-		}else 
-		{
-		this.load = this.load + i;
-		}
+	public void addLoad(int load) throws DumpsterException{
+		setLoad(this.load + load);
 	}
 
 }

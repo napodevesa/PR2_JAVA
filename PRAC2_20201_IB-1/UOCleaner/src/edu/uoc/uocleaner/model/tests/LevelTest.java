@@ -41,9 +41,9 @@ class LevelTest {
 	void testGetCell() {
 		assertEquals("D",level.getCell(0, 4).toString());
 		assertEquals("D",level.getCell(-1, 4).toString()); //(0,4)
-		assertEquals("·",level.getCell(0, -1).toString()); //(0,0)
+		assertEquals("�",level.getCell(0, -1).toString()); //(0,0)
 		assertEquals("#",level.getCell(0, 80).toString()); //last sprite of the first row
-		assertEquals("·",level.getCell(-20, -1).toString());//first sprite (0,0)
+		assertEquals("�",level.getCell(-20, -1).toString());//first sprite (0,0)
 		assertEquals("#",level.getCell(100, 80).toString()); //last sprite of the last row
 	}
 
@@ -53,7 +53,7 @@ class LevelTest {
 		
 		try{
 			corridor = new Corridor(0,0);
-			level.setCell(corridor);
+			level.setCell​(corridor);
 			assertEquals(corridor,level.getCell(0,0));
 			assertEquals(0,corridor.getRow());
 			assertEquals(0,corridor.getColumn());
@@ -153,7 +153,7 @@ class LevelTest {
 	@Test
 	void testToString() {
 		assertEquals(level.toString().lastIndexOf("\n"),level.toString().length()-1);
-		assertEquals("·   D##  · ########· ##    ·· @####  ##   ·    # ··  ##  ##########  ##  ########### ##        # V     ·    #   #### #   ##   # ·    #   # ### ·### ·#   #     #",level.toString().replaceAll("\n|\r\n", ""));
+		assertEquals("�   D##  � ########� ##    �� @####  ##   �    # ��  ##  ##########  ##  ########### ##        # V     �    #   #### #   ##   # �    #   # ### �### �#   #     #",level.toString().replaceAll("\n|\r\n", ""));
 	}
 
 }
