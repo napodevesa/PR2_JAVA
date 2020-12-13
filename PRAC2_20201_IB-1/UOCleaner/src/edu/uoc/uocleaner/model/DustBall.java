@@ -1,5 +1,6 @@
 package edu.uoc.uocleaner.model;
 
+import java.util.ArrayList;
 import java.util.Random;
 
 
@@ -65,31 +66,38 @@ public class DustBall extends Dirt implements Movable  {
 
 	public java.util.ArrayList<int[]> moveRandomly(Level level) throws SpriteException{
 		
-		java.util.ArrayList<int[]> list = new java.util.ArrayList<>();
+		ArrayList<int[]> list = new java.util.ArrayList<>();
 		
-		int[] pos = {this.getRow(),this.getColumn()};
-	
-		int c = 0;
-		for(int i=0;i<2;i++) {
-			for(int j=0;j<2;j++) {
-				for(int k=-1; k<2; k+=2) {
-					int[] p = {pos[0]+k*i*SPEED, pos[1]+k*j*SPEED};
-					if(c>1 && c<6) {
-						if(validMove​(level, p[0], p[1])) list.add(p);
-					}
-					c++;
-				}
-				
-			}
+		int[] xy = {this.getRow(),this.getColumn()};
+		
+		int[] xy1 = {xy[0], xy[1]+SPEED}; 
+		int[] xy2 = {xy[0]-SPEED, xy[1]};
+		int[] xy3 = {xy[0], xy[1]-SPEED};
+		int[] xy4 = {xy[0]+SPEED, xy[1]};
+		
+		int cel = 0;
+		if(cel > 0 && cel <= 5) 
+		
+		{
+			if(validMove​(level, xy1[0], xy1[1])) list.add(xy1);
+			if(validMove​(level, xy2[0], xy2[1])) list.add(xy2);
+			if(validMove​(level, xy3[0], xy3[1])) list.add(xy3);
+			if(validMove​(level, xy4[0], xy1[1])) list.add(xy4);
 		}
 		
-		Random r = new Random();
-		if(r.nextDouble()>=0.75 && !list.isEmpty()) {
-			int index = r.nextInt(list.size());
-			int row = list.get(index)[0];
-			int col = list.get(index)[1];
+
+		Random random = new Random();
+	
+		if( list.isEmpty() == false && random.nextDouble()>= 0.75) {
+		
+			int idx = random.nextInt(list.size());
+			
+			int row = list.get(idx)[0];
+		
+			int col = list.get(idx)[1];
 			
 			Sprite dirt = new Dirt(this.getRow(), this.getColumn());
+			
 			if(!(level.getCell(this.getRow(), this.getColumn()) instanceof Dirt)) level.setCell​(dirt); 
 			
 			setRow(row);

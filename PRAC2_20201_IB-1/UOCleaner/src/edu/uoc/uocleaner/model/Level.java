@@ -1,14 +1,10 @@
 package edu.uoc.uocleaner.model;
 
-import java.io.File;
 import java.io.FileInputStream;
 import java.io.FileNotFoundException;
-import java.util.ArrayList;
 import java.util.Arrays;
-import java.util.Collection;
 import java.util.List;
 import java.util.Scanner;
-import java.util.stream.Stream;
 
 /** 
  * Level/Room class. 
