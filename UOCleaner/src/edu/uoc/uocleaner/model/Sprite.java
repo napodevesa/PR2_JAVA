@@ -1,160 +1,101 @@
 package edu.uoc.uocleaner.model;
 
-import java.lang.Object;
-import java.lang.String;
+/** 
+ * Sprite class. 
+ * @author Napoleon Devesa Dalio 
+ * @version 1.0 
+ */
 
-public abstract class Sprite  {
+public abstract class Sprite extends java.lang.Object {
 	
-	private int row;
-	private int column;
-	private Symbol symbol;
+	private int	column;
+	private int	row;
+	private Symbol symbol ;
 	
-	
-	
+
+
 	protected Sprite (int row, int column, Symbol symbol) throws SpriteException {
 		
-		this.setColumn(column);	
-		this.setRow(row);	
-		this.setSymbol(symbol);
-		
+		this.row = row;
+		this.column = column;
+		setSymbol(symbol);		
 	}
 	
-	public Sprite(int column2, int column3) {
-		// TODO Auto-generated constructor stub
-	}
 
 	public int getColumn() {
-		
-		return column ;
+		return this.column;
 	}
-	
-	
 
-	public int getRow() {
-		return row;
-	}
-	public void setRow(int row) throws SpriteException {
+	public void setColumn(int column) throws SpriteException{
 		
-		
-		if (row <= 0) {
-			throw new SpriteException(SpriteException.ERROR_INDEX_ROW_INCORRECT);
+		if (column < 0) 
+		{
+			throw new SpriteException(SpriteException.ERROR_INDEX_COLUMN_INCORRECT);
+		}
+		else 
+		{	
+		this.column = column;
 		}
 		
-		else 
+	}
+
+	public int getRow() {
+		return this.row;
+	}
+
+	public void setRow(int row) throws SpriteException {
 		
+		if (row < 0) 
+		{
+			throw new SpriteException(SpriteException.ERROR_INDEX_ROW_INCORRECT);
+		}
+		else 
 		{
 		this.row = row;
 		}
 		
 	}
 	
-	
-	
-	public void setColumn(int column) throws SpriteException {
-		
-		
-		if (column <= 0) {
-			
-			throw new SpriteException(SpriteException.ERROR_INDEX_COLUMN_INCORRECT);
-		}
-		
-		else 
-		
-		{
-			
-		this.column = column;
-		}
-		
-	}
-	
-	
-	public Symbol getSymbol() {
-		return symbol;
+
+	public Symbol getSymbol() {		
+		return this.symbol;
+
 	}
 	
 
+	private void setSymbol(Symbol symbol) {
 
-	public void setSymbol(Symbol symbol) {
 		this.symbol = symbol;
 	}
-
-	/*
 	
-@Override
 	
+	@Override
 	public boolean equals(Object obj) {
-	
-	  final Sprite other = (Sprite)obj;
-	
-		if (this == obj) {
+		Sprite s = (Sprite) obj;
+		
+		if(this == s || 
+				(this.getRow() == s.getRow() && 
+				this.getColumn() == s.getColumn()) &&
+				this.getSymbol() == s.getSymbol() )
+
+		
+		  {
 			return true;
 		}
-	    
-		if (obj == null) {
-	    	return false;
-	    }
-	   
-		if (getClass() != obj.getClass()) {
-	    	return false;
-	    }
-    
-	   /*  
-	    if (this.getColumn() == other.getColumn() && this.getRow() == other.getRow() 
-	    		&& symbol.getAscii()== other.symbol.getAscii()) {
-	    	return true;
-	    }
-   
-
-	    return false;
+		
+		return false;		
 	}
-*/	
-
-	@Override
 	
-	public String toString()  {
-		
 	
-
-	 	Symbol.DUSTBALL.toString();
-		Symbol.DUMPSTER.toString();
-		Symbol.VACUUM.toString() ;
-		Symbol.DIRT.toString() ;
-		Symbol.WALL.toString() ;
-		Symbol.CORRIDOR.toString() ;
-
-		return Symbol.WALL.toString()  ;
-	}	
+		@Override
+		public String toString() {
 		
-	/*
+		String a =	String.valueOf(symbol.getAscii());
 		
-
-        String ascii = "";
-        
-        switch (6) 
-        {
-            case 1:  ascii = Symbol.DUSTBALL.toString();
-                     break;
-            case 2:  ascii = Symbol.DUMPSTER.toString();
-                     break;
-            case 3:  ascii = Symbol.VACUUM.toString();
-                     break;
-            case 4:  ascii = Symbol.DIRT.toString();
-                     break;
-            case 5:  ascii = Symbol.WALL.toString();
-                     break;
-            case 6:  ascii = Symbol.CORRIDOR.toString();
-                     break;
-           
-        }
-		
-        String str = String.valueOf(ascii);
-		return str;
-
+		return a;
 		
 	}
 	
-*/
 
-	
 
 }

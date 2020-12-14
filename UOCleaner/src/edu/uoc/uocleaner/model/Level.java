@@ -1,15 +1,14 @@
 package edu.uoc.uocleaner.model;
 
-import java.io.File;
+import java.io.FileInputStream;
 import java.io.FileNotFoundException;
-import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.List;
 import java.util.Scanner;
 
 /** 
  * Level/Room class. 
- * @author David Garc�a Sol�rzano 
+ * @author David Garc�a Sol�rzano
  * @version 1.0 
  */
 public class Level{
@@ -53,11 +52,13 @@ public class Level{
 		boolean isDumpster = false, isDirt = false;
 		int numVacuums = 0;		
 		
-		Scanner sc = new Scanner(new File(fileName));
+		Scanner sc = new Scanner(new FileInputStream(fileName), "UTF-8");
+		
+		//Scanner sc = new Scanner(new File(fileName));
 
 		// find the number of rows and columns       
         setNumRows(Integer.parseInt(sc.nextLine()));
-        setNumRows(Integer.parseInt(sc.nextLine()));
+        setNumColumns(Integer.parseInt(sc.nextLine()));
         setImageBackground(sc.nextLine());
         setTurns(Integer.parseInt(sc.nextLine()));
         setTime(Integer.parseInt(sc.nextLine()));
@@ -90,155 +91,259 @@ public class Level{
 	
 
 
+	
+	private void setTime(int time) throws LevelException {
+	
+		// TODO Auto-generated method stub
+		if (time < 0) 
+		{
+			throw new LevelException(LevelException.ERROR_NUM_TIME_INCORRECT); 
+		
+		}else {
+			
+			this.time= time;
+		
+		}
+		
+	}
 
-	public java.util.List <Sprite> get1DBoard(){
-		return null;
-		// TODO Auto-generated method stub
+
+
+	private void setTurns(int turns) throws LevelException {
+	
 		
+		if (turns < 0) {
+			throw new LevelException(LevelException.ERROR_NUM_TURNS_INCORRECT); 
+		
+		}else {
+			
+			this.turns= turns;
+		}
+		
+	}
+
+
+
+	private void setImageBackground(String nextLine) {
+		
+		this.imageBackground = nextLine;
+		
+	}
+
+	private void setNumColumns(int numColumns) throws LevelException {
+	
+		
+		if (numColumns<=0) 
+		{
+			throw new LevelException(LevelException.ERROR_NUM_COLUMNS_INCORRECT); 
+		}
+		else 
+		{
+			this.numColumns= numColumns;
+		}
+		
+	}
+
+
+
+	private void setNumRows(int numRows) throws LevelException{
+		
+		if (numRows <= 0) 
+		{
+			throw new LevelException(LevelException.ERROR_NUM_ROWS_INCORRECT); 
+		}
+		else 
+		{
+			this.numRows = numRows;
+		}
+		
+	}
+
+
+
+	public List<Sprite> get1DBoard() {
+
+		Sprite [] s = convert2DArrayTo1DArrayV1 ( this.board);
+		
+		List<Sprite> list = Arrays.asList(s);
+		
+		return list;
+
 	}
 	
-	private int putRowInRange​(int row) {
-		return row;
-		
-	}
-	private int putColumnInRange​(int column) {
-		return column;
-		
-	}
 	
-	public Sprite getCell​(int row, int column) {
-		// TODO Auto-generated method stub
-		return null;
+
+	public Sprite getCell(int i, int j) {
+		
+		return board[putRowInRange(i)][putColumnInRange(j)];
+		
 	}
+
+
 	public void setCell​(Sprite sprite) throws SpriteException{
 		
-	}
+		int a = sprite.getRow();	
+		int b = sprite.getColumn();
+		
+		putRowInRange(a);
+		putColumnInRange(b);
+		
+		board[a][b] = sprite;
 	
-	public void setCell​(int row, int column, Sprite sprite) throws SpriteException{
-		// TODO Auto-generated method stub
+	}
+
+
+	public void setCell(int i, int j, Sprite sprite) throws SpriteException{
+		
+		int a = putRowInRange(i);
+		int b = putColumnInRange(j);
+		
+		sprite.setRow(a);
+		sprite.setColumn(b);
+		
+		board[a][b] = sprite;
 		
 	}
-	
+
+	private int putColumnInRange(int j) {
+
+		if (j<0) {
+		
+			j=0;
+		}
+		
+		else if (numColumns<=j) 
+		
+		{
+			j=numColumns -1;
+			
+		}
+		
+		return j;
+	}
+
+
+	private int putRowInRange(int i) {
+		
+		if (i<0) 
+		{
+			i=0;
+		}
+		
+		else if (numRows<=i) 
+		
+		{
+			
+			i=numRows -1;
+			
+		}
+		
+		return i;
+	}
+
+
 	public int getNumRows() {
+		
 		return numRows;
 	}
 	
-	private void setNumRows(int numRows) throws LevelException{
-		// TODO Auto-generated method stub
-		
-		if (numRows<=0) {
-			throw new LevelException(LevelException.ERROR_NUM_ROWS_INCORRECT);
-			
-		} else {
-			
-			this.numRows=numRows;
-		}
-		
-	}
-	
+
 	public int getNumColumns() {
+		
 		return numColumns;
 	}
-	
-	private void setNumColumns​(int numColumns) throws LevelException{
-	
-		if (numColumns<=0) {
-			throw new LevelException(LevelException.ERROR_NUM_COLUMNS_INCORRECT);
 
-		}else {
-			
-			this.numColumns = numColumns;
-		}
+
+	public String getImageBackground() {
 		
-	}
-	 public java.lang.String getImageBackground(){
 		return imageBackground;
-		
-	}
-	 
-	 private void setImageBackground(String nextLine) {
-			// TODO Auto-generated method stub
-			
-		}
-	 
-	
-	
-	
-	 private void setTurns(int turns) throws LevelException{
-			
-		 if (turns<=0){
-			throw new LevelException(LevelException.ERROR_NUM_TURNS_INCORRECT);
-
-		 }else {
-			 this.turns = turns;
-		 }
-	 }
-	
-	 
-	 public void decTurns() throws LevelException{
-			// TODO Auto-generated method stub
-			
-			turns = turns -1;
-			
-		}
-	 
-	 public int getTime() {
-		 return time;
-	 }
-
-
-	
-	
-	 private void setTime(int time) throws LevelException{
-		if (time<=0){
-			throw new LevelException(LevelException.ERROR_NUM_TIME_INCORRECT);
-
-		 }else {
-			 
-			 this.time = time;
-		 }
 	}
 	
-
-
-	public void decTime() throws LevelException{
-		// TODO Auto-generated method stub
-		time = time - 1;
-		
-	}
 	
-	public java.lang.String toString(){
-		return imageBackground;
-		
-	}
-
-	public void setCell(Corridor corridor) {
-		// TODO Auto-generated method stub
-		
-	}
-
-
-
-	public void setCell(int i, int j, Corridor corridor) {
-		// TODO Auto-generated method stub
-		
-	}
-
-
-
 
 	public int getTurns() {
-		// TODO Auto-generated method stub
 		return turns;
 	}
-
-
-
-
-	public DustBall getCell(int i, int j) {
-		// TODO Auto-generated method stub
-		return null;
+	
+	
+	
+	public void decTurns() throws LevelException{
+	
+		this.turns = turns -1 ;
+		
+		if (turns < 0) {
+			throw new LevelException(LevelException.ERROR_NUM_TURNS_INCORRECT); 
+		}
 	}
+	
+	public int getTime() {
+		return time;
+	}
+
+	
+	public void decTime() throws LevelException{
+		
+		this.time = time - 1 ;
+		
+		if (time < 0) {
+			throw new LevelException(LevelException.ERROR_NUM_TIME_INCORRECT); 
+		}
+	}
+
+
+
+	//@Override
+
+	public String toString(){
+		
+		
+		String aString="";
+		
+		for(int row = 0; row < board.length; row++) {
+		     for(int col = 0; col < board[row].length; col++) {
+		        aString += board[row][col];
+		     }
+		     aString += "\r\n";
+		  }
+		  return aString;
+		
+
+	}
+	
+
+	
+		// AUX 
+	
+		public static Sprite[] convert2DArrayTo1DArrayV1 ( Sprite[][] array ) {
+		
+		int totalLength = 0;
+		
+		
+		for ( Sprite[] arr : array ) 
+		
+		{
+			
+			totalLength += arr.length;
+		}
+		
+		Sprite[] result = new Sprite [ totalLength ] ;
+		
+		int idx = 0;
+		
+		
+		for ( Sprite[] arr : array ) 
+		
+		{
+			
+			for ( Sprite i : arr ) {
+				
+				result [ idx++ ] = i;
+			}
+		}
+		
+		return result;
+	}
+
 
 	
 	

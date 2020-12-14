@@ -11,6 +11,7 @@ import edu.uoc.uocleaner.model.Corridor;
 import edu.uoc.uocleaner.model.SpriteException;
 import edu.uoc.uocleaner.model.Symbol;
 
+
 @TestInstance(Lifecycle.PER_CLASS)
 
 class CorridorTest {

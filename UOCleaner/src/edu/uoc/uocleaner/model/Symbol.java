@@ -2,35 +2,40 @@ package edu.uoc.uocleaner.model;
 
 import java.lang.String;
 
+/** 
+ * Symbol class. 
+ * @author Napoleon Devesa Dalio 
+ * @version 1.0 
+ */
 
-public enum Symbol {
+public enum Symbol  {
 	
+	DUSTBALL('@', "dustball.png" ),
+	
+	DUMPSTER('D', "dumpster.png" ),
+	
+	VACUUM('V', "huocver.png" ),
+	
+	DIRT('�', "dirt.png" ),
+	
+	WALL('#', "" ),
+	
+	CORRIDOR(' ', "" );
 
-		DUSTBALL,
-		DUMPSTER,
-		VACUUM,
-		DIRT,
-		WALL,
-		CORRIDOR;
-	
-	
+		
 		private char ascii ;
 		private String image;
 		
-		
 
 		
-		private Symbol() {
-			// TODO Auto-generated constructor stub
-		}
-		
-	
 		private Symbol(char ascii, String image)  {
 			
-			
-			
+			this.ascii = ascii;
+			this.image = image;
+
 		}
-		
+
+
 		public static Symbol getName(char ascii)  {
 			
 			
@@ -48,7 +53,7 @@ public enum Symbol {
 				return VACUUM;
 			
 			}
-			if (ascii == '·'){
+			if (ascii == '�'){
 				return DIRT;
 			
 			}
@@ -66,16 +71,13 @@ public enum Symbol {
 			return null ;
 			
 		}
-		
-		
-		
-		
+	
 		public char getAscii()  {
 			
 			DUSTBALL.ascii = '@';
 			DUMPSTER.ascii = 'D';
 			VACUUM.ascii = 'V';
-			DIRT.ascii = '·';
+			DIRT.ascii = '�';
 			WALL.ascii = '#';
 			CORRIDOR.ascii = ' ';
 			
@@ -84,9 +86,8 @@ public enum Symbol {
 			
 			
 		}
-		
-		
-		public java.lang.String getImage()  {
+	
+		public String getImage()  {
 			
 			DUSTBALL.image = "dustball.png";
 			DUMPSTER.image = "dumpster.png";
@@ -95,48 +96,77 @@ public enum Symbol {
 			WALL.image = "";
 			CORRIDOR.image = "";
 			
-			
 			return this.image;
 					
 		}
 		
 		
+		
+		
 	@Override
 		
 	public String toString()  {
-		
-		DUSTBALL.ascii =  '@';
-		DUMPSTER.ascii = 'D';
-		VACUUM.ascii = 'V';
-		DIRT.ascii = '·';
-		WALL.ascii = '#';
-		CORRIDOR.ascii = ' ';
-		
-		String str = String.valueOf(this.ascii);
+
+		String str = String.valueOf(getAscii());
 		
 		return str;
 		
 		}
 	
 
-	public static Symbol valueOf() throws IllegalArgumentException,NullPointerException{
+	public static Symbol valueOf​(String name) {
 		
-		return null;
-			
+		if ("DUSTBALL"== name){
+			return DUSTBALL;
+		
+		}
+		
+		if ("DUMPSTER" ==  name){
+			return DUMPSTER;
+		
+		}
+		
+		if ("VACUUM" == name){
+			return VACUUM;
+		
+		}
+		if ("DIRT" == name){
+			return DIRT;
+		
+		}
+		
+		if ("WALL" == name){
+			return WALL;
+		
+		}
+		if ("CORRIDOR" == name){
+			return CORRIDOR;
+		
+		}
+		
+		
+		return null ;
+		
+		
 	}
-	
-		
-	
-	public static Symbol[] values1() {
-		
-		
-		Symbol[] Symbol= {DUSTBALL, DUMPSTER,VACUUM,DIRT,WALL,CORRIDOR};
-		
-		return Symbol;
-			
-	}
-	
 	
 
+	//AUX
+
+	
+	public int symbolOrdinal(Symbol nameSym)  {
 		
+		Symbol symbol[] = Symbol.values();
+		
+		for (Symbol sym : symbol) 
+	    { 
+			return sym.ordinal(); 
+			
+	    }
+	return 0;	
+		
+	}
+
+
+	
 }

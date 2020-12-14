@@ -1,38 +1,43 @@
 package edu.uoc.uocleaner.model;
 
-public class Dirt extends Sprite{
+/** 
+ * Dirt class. 
+ * @author Napoleon Devesa Dalio 
+ * @version 1.0 
+ */
+
+public class Dirt extends Sprite {
 	
-	private int score = 1;
+	private int	score;
 	
-	public Dirt(int row, int column)throws SpriteException {
-		// TODO Auto-generated constructor stub
+
+
+	public Dirt(int row, int column) throws SpriteException {
+		
+		super(row, column, Symbol.DIRT);
+		score = 1;
+
 		
 	}
-	
-	
-	protected Dirt(int row, int column, Symbol symbol, int score) 
-			throws SpriteException{
+
+	protected Dirt(int row, int column, Symbol symbol, int score) throws SpriteException {
+		
 		super(row, column, symbol);
 		
-		this.setRow(row);
-		this.setColumn(column);
-		this.setSymbol(symbol);
-		this.setScore (score);
+		setScore(score);
+		
 		
 	}
-	
-	
 
-
+	
 	public int getScore() {
-		return score;
+		return this.score;
 	}
-
 
 	protected void setScore(int score) {
 		this.score = score;
 	}
-	
+
 
 
 }

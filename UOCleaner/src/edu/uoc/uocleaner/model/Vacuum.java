@@ -1,103 +1,97 @@
 package edu.uoc.uocleaner.model;
 
-import java.lang.Object;
+/** 
+ * Vacuum class. 
+ * @author Napoleon Devesa Dalio 
+ * @version 1.0 
+ */
 
-public class Vacuum extends Sprite {
+
+public class Vacuum extends Sprite implements Movable{
+
 	
-	 int Max_Capacity;
-	private int capacity = 0;
+	private final int MAX_CAPACITY;
+	private int capacity;
 	private Sprite under;
 	
-
-
-	public Vacuum(int i, int j, int k) throws  SpriteException, VacuumException  {
-		// TODO Auto-generated constructor stub
-	}
 	
-
-
-
-	public void empty() throws VacuumException {
-		// TODO Auto-generated method stub
+	public Vacuum(int row, int column, int maxCapacity) throws VacuumException, SpriteException {
 		
-		if (capacity<0 ) {
-			throw new VacuumException(VacuumException.ERROR_CAPACITY_NEGATIVE_VALUE);
-
-		}
-		else if (capacity>Max_Capacity ) {
-			throw new VacuumException(VacuumException.ERROR_OVERFLOW_MAX_CAPACITY);
-
-		}else {
-			this.capacity=0;
-		}
+		super(row, column, Symbol.VACUUM);
 		
-	
-		
-	}
-
-
-	public int getCapacity() {
-		return capacity;
-	}
-	
-	
-	public Sprite getUnder() {
-		return under;
-		
-	}
-	
-	public int getMaxCapacity() {
-		return Max_Capacity;
-	}
-	
-	public void incCapacity(int cap) throws VacuumException{
-		// TODO Auto-generated method stub
-		
-		if (capacity<=0) {
-			throw new VacuumException(VacuumException.ERROR_INC_CAPACITY_NEGATIVE_VALUE);
-	
-		}
-		else 
+		if(maxCapacity<= 0) 
+			
 		{
-			capacity += cap;
-					
-					if (capacity > Max_Capacity ) {
-						throw new VacuumException(VacuumException.ERROR_OVERFLOW_MAX_CAPACITY);
-
-					}
+			throw new VacuumException(VacuumException.ERROR_MAX_CAPACITY_VALUE);
 		}
 		
+		else 
+			
+		{
+			MAX_CAPACITY = maxCapacity;
+		}
+		
+		under = new Corridor(row, column);
 	}
 	
-	@SuppressWarnings("unused")
-	private void setCapacity​(int capacity) throws VacuumException{
+	public int getCapacity() {
 		
-		if (capacity<0 ) {
-			throw new VacuumException(VacuumException.ERROR_CAPACITY_NEGATIVE_VALUE);
-
-		}
-		else if (capacity>Max_Capacity ) {
+		return this.capacity;
+	
+	}
+	
+	public void setCapacity(int capacity) throws VacuumException{
+	
+		if(capacity > MAX_CAPACITY) 
+		{
 			throw new VacuumException(VacuumException.ERROR_OVERFLOW_MAX_CAPACITY);
-
-		}else {
-			this.capacity=capacity;
 		}
 		
+		if(capacity < 0) 
+		{
+			throw new VacuumException(VacuumException.ERROR_CAPACITY_NEGATIVE_VALUE);
+		}
+		this.capacity = capacity;
 	}
 	
-
-	public void moveTo(int i, int j) throws SpriteException {
-		// TODO Auto-generated method stub
+	public void incCapacity(int i) throws VacuumException{
 		
-		setRow (i);
-		setColumn (j);
+		if(i<0) 
+			
+		{
+			throw new VacuumException(VacuumException.ERROR_INC_CAPACITY_NEGATIVE_VALUE);
+		}
 		
+		setCapacity( i + getCapacity());
 	}
-
+	
+	
+	public void empty() throws VacuumException{
+		
+		this.capacity= 0;
+	
+	}
+	
 	public void setUnder(Sprite under) {
 		this.under = under;
 	}
+	
+	public Sprite getUnder() {
+		
+		return this.under;
+	}
+	
 
+	
+	public int getMaxCapacity() {
+		return MAX_CAPACITY;
+	}
 
-
+	
+	public void moveTo(int row, int column) throws SpriteException {
+		
+		setRow(row);
+		setColumn(column);
+	
+	}
 }
