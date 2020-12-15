@@ -99,13 +99,14 @@ public class Game {
 	 */
 	private boolean isFinished() {
 		
-		if (numLevel==MAX_LEVELS) {
+		if (numLevel== MAX_LEVELS)
+			
+		{
 			return true;	
 		}
-		else
-		{
+		
 			return false;
-		}
+		
 		
 	}
 	
@@ -128,15 +129,20 @@ public class Game {
 	public boolean nextLevel() throws FileNotFoundException, LevelException, VacuumException, SpriteException {		
 		
 		totalScore = levelScore + totalScore ;
-		levelScore= 0;
 		
-		if (isFinished()) {
+		resetLevelScore() ;
+		
+		if (isFinished()) 
+		
+		{
 			return false;
 		}
-		else 
-		{
+		
+		numLevel = numLevel+1;
+			loadLevel();
+
 			return true;
-		}
+			
 
 	}
 	
@@ -169,7 +175,28 @@ public class Game {
 	 * @return true if this level is beaten, otherwise false.
 	 */
 	public boolean isLevelBeaten() {
-		//TODO		
+		
+		if 	
+		
+		(	
+			level.get1DBoard()
+			.stream()
+			.filter(p -> (p instanceof DustBall && p instanceof Dirt))
+			.collect(Collectors.toList()) == null 	
+			&& huocver.getCapacity() == 0    		
+		) 
+			
+		{
+			return true  ;
+		}
+		
+		else 
+			
+		{
+			return false ;
+		}
+		
+		
 	}
 	
 	/**
@@ -308,7 +335,7 @@ public class Game {
 	    		}
 	    		
 	    		huocver.moveTo(row + dRow, col + dCol);
-	    		level.setCell(huocver);    		
+	    		level.setCell​(huocver);    		
 	    	}
 		}		
 	}
@@ -337,7 +364,21 @@ public class Game {
 	 * Moves all the dustballs that are in the level/room.	  
 	 */
 	private void moveDustBalls(){	
-		//TODO		
+		
+		level.get1DBoard()
+		.stream()
+		.filter(p-> (p instanceof DustBall))
+		. forEach(d -> {DustBall dustball = (DustBall) d;
+		   
+				try 
+				{
+					dustball.moveRandomly(level);
+				} catch (SpriteException e) {
+					// TODO Auto-generated catch block
+					e.printStackTrace();
+				}
+				
+				});		
 	}	
 	
 	/**
